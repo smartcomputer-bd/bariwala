@@ -1,15 +1,9 @@
 <!doctype html>
 <html lang="bn">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#172554">
 <title>স্মার্ট বাড়িওয়ালা — বাড়ি ভাড়া ব্যবস্থাপনা</title>
-
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
-
 <style>
 :root{--bg:#f2f6ff;--card:#fff;--ink:#172033;--muted:#64748b;--primary:#315cf5;--line:#e4eaf5;--shadow:0 12px 30px #243b6814}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0,#dbeafe 0,transparent 32%),var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:10px 14px;font-weight:700;transition:.2s}button:hover{transform:translateY(-1px);filter:brightness(.98)}.primary{background:linear-gradient(135deg,#315cf5,#714cf6);color:white;box-shadow:0 7px 16px #315cf533}.secondary{background:#eef2ff;color:#3148a8}.danger{background:#fee2e2;color:#b91c1c}.success{background:#dcfce7;color:#166534}.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}input,select,textarea{width:100%;border:1px solid #d9e2f1;background:var(--card);border-radius:12px;padding:11px 12px;outline:none;color:var(--ink)}input:focus,select:focus,textarea:focus{border-color:#6684ff;box-shadow:0 0 0 3px #315cf51a}label{display:block;font-size:13px;color:var(--muted);font-weight:700;margin:0 0 6px}.field{margin-bottom:13px}.shell{max-width:1400px;margin:auto;padding:16px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}.brand{display:flex;gap:11px;align-items:center}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,#315cf5,#8b5cf6);display:grid;place-items:center;color:white;font-size:24px;box-shadow:0 8px 20px #315cf544}.brand h1{font-size:20px;margin:0}.brand p{font-size:12px;color:var(--muted);margin:2px 0}.userbox{display:flex;align-items:center;gap:8px}.nav{display:flex;gap:8px;overflow:auto;padding:7px;background:#ffffffb8;border:1px solid #ffffff;border-radius:17px;box-shadow:var(--shadow);position:sticky;top:6px;z-index:10;backdrop-filter:blur(12px);margin-bottom:18px}.nav button{white-space:nowrap;background:transparent;color:#64748b;font-size:15px;padding:13px 16px;min-height:48px}.nav button.active{background:#e8edff;color:#2d4fe2;box-shadow:inset 0 0 0 1px #d9e1ff;font-weight:900}.page{display:none;animation:rise .25s ease}.page.active{display:block}@keyframes rise{from{opacity:.3;transform:translateY(7px)}to{opacity:1;transform:none}}.heading{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:8px 0 16px}.heading h2{font-size:25px;margin:0}.heading p{margin:4px 0 0;color:var(--muted);font-size:13px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat{padding:19px;border-radius:20px;background:var(--card);box-shadow:var(--shadow);border:1px solid #ffffff;position:relative;overflow:hidden}.stat:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:-22px;top:-30px;background:var(--tint,#e0e7ff);opacity:.8}.stat .sicon{font-size:23px}.stat small{display:block;color:var(--muted);font-weight:700;margin-top:12px}.stat strong{display:block;font-size:clamp(22px,2.2vw,32px);margin-top:5px;position:relative;z-index:1}.grid2{display:grid;grid-template-columns:1.2fr .8fr;gap:15px;margin-top:16px}.panel{background:var(--card);border:1px solid #fff;border-radius:20px;padding:18px;box-shadow:var(--shadow);min-width:0}.panel h3{margin:0 0 14px;font-size:17px}.muted{color:var(--muted)}.quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.quick button{min-height:105px;text-align:left;padding:17px;border-radius:18px;background:linear-gradient(135deg,#fff,#f2f5ff);border:1px solid var(--line);color:var(--ink)}.quick span{font-size:25px;display:block;margin-bottom:8px}.quick b{display:block}.quick small{color:var(--muted)}.toolbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.toolbar .search{flex:1;min-width:180px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.tenant{border-radius:18px;background:var(--card);box-shadow:var(--shadow);border:1px solid #e7ecf6;overflow:hidden}.tenant-head{display:flex;gap:13px;padding:16px;background:linear-gradient(120deg,#f8faff,#eef2ff)}.avatar{width:76px;height:76px;border-radius:17px;object-fit:cover;background:#dbeafe;flex-shrink:0}.tenant-head h3{margin:2px 0 4px;font-size:18px}.unit{display:inline-block;background:#1d4ed8;color:white;border-radius:10px;padding:5px 10px;font-weight:900;font-size:17px;letter-spacing:.3px}.tenant-body{padding:13px 16px}.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fact small{display:block;color:var(--muted);font-size:11px}.fact b{font-size:14px;overflow-wrap:anywhere}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}.actions button{font-size:12px;padding:8px 10px}.tablewrap{overflow:auto;border-radius:14px;border:1px solid var(--line)}table{border-collapse:collapse;width:100%;min-width:640px;background:var(--card)}th,td{text-align:left;padding:12px 13px;border-bottom:1px solid var(--line);font-size:13px}th{background:#f3f6ff;color:#475569;font-size:12px}tr:last-child td{border-bottom:0}tbody tr{cursor:pointer}tbody tr:hover{background:#f8faff}.badge{display:inline-block;border-radius:99px;background:#e0e7ff;color:#3730a3;padding:4px 9px;font-size:11px;font-weight:800}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}.span2{grid-column:1/-1}.modal{position:fixed;inset:0;z-index:30;background:#0f172a99;display:none;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}.dialog{background:var(--card);width:min(780px,100%);max-height:92vh;overflow:auto;border-radius:22px;padding:21px;box-shadow:0 25px 90px #0003}.dialoghead{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.dialoghead h3{margin:0}.close{background:#f1f5f9;color:#334155}.empty{text-align:center;padding:28px;color:var(--muted)}.login{min-height:100vh;display:grid;place-items:center;padding:18px;background:radial-gradient(circle at 15% 10%,#c7d2fe,transparent 30%),linear-gradient(135deg,#eff6ff,#f5f3ff)}.loginbox{width:min(420px,100%);background:#ffffffec;backdrop-filter:blur(12px);border:1px solid white;border-radius:27px;padding:28px;box-shadow:0 25px 70px #233f7830}.loginbox .logo{margin-bottom:16px}.loginbox h2{margin:0;font-size:27px}.loginbox p{color:var(--muted);font-size:13px}.notice{font-size:12px;padding:10px 12px;border-radius:11px;background:#fff7ed;color:#9a3412;line-height:1.6}.toast{position:fixed;right:16px;bottom:16px;z-index:50;background:#172554;color:white;border-radius:13px;padding:13px 17px;box-shadow:var(--shadow);display:none;max-width:90vw}.toast.show{display:block;animation:rise .2s}.profileprint,.billprint{display:none}.foot{text-align:center;color:var(--muted);font-size:11px;padding:22px}.dark{--bg:#0b1220;--card:#131e30;--ink:#edf2ff;--muted:#9aa9c2;--line:#29364c;--shadow:0 12px 30px #0002;background:radial-gradient(circle at 10% 0,#1e3150 0,transparent 32%),var(--bg)}.dark .nav{background:#111b2bcc;border-color:#253149}.dark .tenant-head,.dark .quick button,.dark th{background:#1b2940;color:var(--ink)}.dark .nav button.active{background:#293b68;color:#dbeafe}.dark .login{background:#0b1220}.dark .loginbox{background:#131e30;color:var(--ink);border-color:#29364c}
@@ -41,6 +35,7 @@
   .profile-layout .printgrid{margin:0}
   body.printing-bill .printpage,body.printing-profile .printpage{page-break-after:avoid;break-after:avoid}
 }.clickstat{cursor:pointer;transition:transform .2s,box-shadow .2s}.clickstat:hover{transform:translateY(-3px);box-shadow:0 14px 28px #315cf526}.signal{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:7px;vertical-align:middle;box-shadow:0 0 0 3px #fff,0 0 12px currentColor;animation:signalPulse 1.8s infinite}.signal.red{background:#ef4444;color:#ef4444}.signal.green{background:#22c55e;color:#22c55e}@keyframes signalPulse{50%{box-shadow:0 0 0 5px #ffffffa0,0 0 16px currentColor}}.unit-card{cursor:pointer;border:1px solid var(--line);border-radius:18px;background:var(--card);box-shadow:var(--shadow);padding:16px;transition:.2s}.unit-card:hover{transform:translateY(-3px)}.unit-card .unit-name{font-size:23px;font-weight:900}.unit-card .unit-state{font-weight:900}.pay-card{cursor:pointer;border:1px solid var(--line);border-radius:16px;background:var(--card);padding:14px;box-shadow:var(--shadow)}.pay-card:hover{transform:translateY(-2px)}.detail-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.detail-list .fact{padding:10px;background:var(--bg);border-radius:12px}@media(max-width:520px){.detail-list{grid-template-columns:1fr}.unit-card .unit-name{font-size:20px}}
+/* Requested UX upgrade: prominent main navigation, group-scoped unit names, single-sheet printing */
 .nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;overflow:visible;padding:10px}
 .nav button{min-height:72px;white-space:normal;text-align:center;justify-content:center;line-height:1.3;padding:14px 10px;border:1px solid #dce5fb;border-radius:15px;background:linear-gradient(145deg,#fff,#f0f4ff);color:#34466b;font-size:15px;font-weight:850;box-shadow:0 5px 14px #263b6810}
 .nav button.active{background:linear-gradient(135deg,#315cf5,#714cf6);color:#fff;border-color:transparent;box-shadow:0 8px 20px #315cf533}
@@ -60,6 +55,7 @@
 .print-authority{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #111;padding:5px 0 4px;margin-top:6px;break-inside:avoid;page-break-inside:avoid;color:#111;font-size:9px}.print-authority-info{display:flex;align-items:center;gap:12px;min-width:0;flex:1}.print-authority-text{line-height:1.45;overflow-wrap:anywhere}.print-authority-sign{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:92px;text-align:center}.print-authority-sign img{max-width:100px;max-height:28px;object-fit:contain}.print-authority-sign .sign-line{border-top:1px solid #111;padding-top:2px;min-width:92px}.print-authority .qr-stamp{flex:0 0 auto}.print-authority .qr-stamp img{width:58px!important;height:58px!important;border:2px solid #000!important;padding:2px!important;background:#fff!important}.print-authority .qr-stamp small{font-size:7px!important}.printfoot{border-top:1px dashed #999;padding-top:3px;font-size:7px;text-align:center;margin-top:2px;color:#111}
 
 .history-print-table th,.history-print-table td{font-size:8px!important;padding:3px!important}.collection-print-table th,.collection-print-table td{font-size:var(--rowfont,7px)!important;padding:var(--rowpad,3px)!important;line-height:1.05!important}.collection-print .printpage{padding:3mm!important}.collection-print .printhead h1{font-size:15px!important}.collection-print .qr-stamp img{width:55px;height:55px}
+
 </style>
 </head>
 <body>
@@ -101,7 +97,6 @@
   </section>
   <section class="page" id="page-about"><div class="heading"><div><h2>অ্যাবাউট</h2><p>এই সফটওয়্যার সম্পর্কে</p></div></div><div class="panel" style="max-width:760px;margin:auto;text-align:center;padding:30px"><div class="logo" style="margin:auto;font-size:30px;width:66px;height:66px">⌂</div><h2>স্মার্ট বাড়িওয়ালা</h2><p>বাড়ি ভাড়া, ভাড়াটিয়া, মাসিক বিল এবং বকেয়া ব্যবস্থাপনার সহজ ডিজিটাল সমাধান।</p><hr style="border:0;border-top:1px solid var(--line);margin:22px 0"><h3>SMART COMPUTER &amp; TRAINING CENTRE</h3><p>ওয়েবসাইট: <a href="https://smartcomputer-bd.github.io/com/" target="_blank" rel="noopener">www.smartcomputer-bd.github.io/com</a></p><p>ইমেইল: <a href="mailto:smartcomputer660@gmail.com">smartcomputer660@gmail.com</a></p><p>WhatsApp: <a href="https://wa.me/8801614398989" target="_blank" rel="noopener">+8801614398989</a></p></div></section>
 </div>
-
 <div class="modal" id="tenantModal"><div class="dialog"><div class="dialoghead"><h3 id="tenantModalTitle">নতুন ভাড়াটিয়া</h3><button class="close" onclick="closeModal('tenantModal')">✕</button></div><form id="tenantForm"><input type="hidden" id="tenantId"><div class="formgrid">
 <div class="field"><label>ভাড়াটিয়ার নাম *</label><input id="tName" required></div><div class="field"><label>মোবাইল নম্বর *</label><input id="tPhone" required placeholder="01XXXXXXXXX"></div>
 <div class="field"><label>বাড়ির ক্যাটাগরি / গ্রুপ *</label><input id="tGroup" list="groupOptions" required placeholder="প্রথমে বাড়ি/গ্রুপ নির্বাচন করুন"><datalist id="groupOptions"></datalist></div><div class="field"><label>ইউনিট / রুম *</label><select id="tUnit" required><option value="">আগে বাড়ির গ্রুপ নির্বাচন করুন</option></select></div><div class="field"><label>মাসিক বাসা ভাড়া (৳) *</label><input id="tRent" type="number" min="0" required></div>
@@ -111,7 +106,6 @@
 <div class="field"><label>বাসায় উঠার তারিখ</label><input id="tMoveDate" type="date"></div><div class="field"><label>ভাড়াটিয়ার ছবি</label><input id="tPhoto" type="file" accept="image/*"></div>
 <div class="field span2"><img id="photoPreview" alt="" style="display:none;width:90px;height:90px;object-fit:cover;border-radius:15px"></div>
 </div><div class="actions"><button class="primary">তথ্য সেভ করুন</button><button type="button" class="ghost" onclick="closeModal('tenantModal')">বাতিল</button></div></form></div></div>
-
 <div class="modal" id="billModal"><div class="dialog"><div class="dialoghead"><h3 id="billModalTitle">নতুন বিল তৈরি</h3><button class="close" onclick="closeModal('billModal')">✕</button></div><form id="billForm"><input type="hidden" id="billId"><div class="formgrid">
 <div class="field"><label>বিলের মাস *</label><input id="bMonth" type="month" required></div><div class="field"><label>ভাড়াটিয়া নির্বাচন *</label><select id="bTenant" required><option value="">ভাড়াটিয়া নির্বাচন করুন</option></select></div>
 <div class="field"><label>ভাড়াটিয়ার নাম</label><input id="bName" readonly></div><div class="field"><label>মোবাইল নম্বর</label><input id="bPhone" readonly></div>
@@ -122,66 +116,67 @@
 <div class="field"><label>পূর্বের বকেয়া (৳)</label><input id="bDue" type="number" min="0" value="0"></div><div class="field"><label>বকেয়ার বিষয়</label><input id="bDueNote" placeholder="বকেয়ার বিবরণ"></div><div class="field"><label>এই বিলের বিপরীতে জমা (৳)</label><input id="bPaid" type="number" min="0" value="0"></div>
 <div class="field span2"><div class="panel" style="background:#f5f7ff;box-shadow:none"><b>লাইভ হিসাব</b><div id="billCalc" style="margin-top:8px">ইউনিট: 0 • বিদ্যুৎ: ৳0 • সর্বমোট: ৳0</div></div></div>
 </div><div class="actions"><button class="primary">বিল সেভ করুন</button><button type="button" class="ghost" onclick="closeModal('billModal')">বাতিল</button></div></form></div></div>
-
 <div class="modal" id="unitModal"><div class="dialog"><div class="dialoghead"><h3 id="unitModalTitle">নতুন বাড়ির ইউনিট</h3><button class="close" onclick="closeModal('unitModal')">✕</button></div><form id="unitForm"><input type="hidden" id="unitId"><div class="formgrid"><div class="field"><label>বাড়ির ক্যাটাগরি / গ্রুপ *</label><input id="uGroup" list="unitGroupOptions" required placeholder="আগের গ্রুপ বাছুন বা নতুন লিখুন"><datalist id="unitGroupOptions"></datalist></div><div class="field"><label>ইউনিট / রুমের নাম *</label><input id="uName" list="unitNameOptions" required placeholder="আগের ইউনিট বাছুন বা নতুন লিখুন"><datalist id="unitNameOptions"></datalist></div><div class="field span2"><label>ঠিকানা / নোট</label><input id="uNote" placeholder="ঐচ্ছিক"></div></div><div class="actions"><button class="primary">ইউনিট সেভ করুন</button><button type="button" class="ghost" onclick="closeModal('unitModal')">বাতিল</button></div></form></div></div>
-
 <div class="modal" id="viewModal"><div class="dialog"><div class="dialoghead"><h3 id="viewTitle">বিস্তারিত</h3><button class="close" onclick="closeModal('viewModal')">✕</button></div><div id="viewContent"></div></div></div>
-
 <div id="printArea" class="billprint"></div><div id="profilePrint" class="profileprint"></div><div id="toast" class="toast"></div>
 
+<!-- Firebase SDKs (Compat Version for Realtime Database) -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
 <script>
-// --- FIREBASE CONFIGURATION (Ebr.html থেকে নেওয়া) ---
+// Firebase Configuration Setup
 const firebaseConfig = {
-    apiKey: "AIzaSyAsosjugcKHhR6-M_AurTrxIe2SV0pIBpE",
-    authDomain: "smart-erp-175cf.firebaseapp.com",
-    databaseURL: "https://smart-erp-175cf-default-rtdb.firebaseio.com",
-    projectId: "smart-erp-175cf",
-    storageBucket: "smart-erp-175cf.firebasestorage.app",
-    messagingSenderId: "787232044499",
-    appId: "1:787232044499:web:20c9ac6d80f92ce81c2b26",
-    measurementId: "G-8VE4ZEP3JG"
+  apiKey: "AIzaSyAkRg9I9j54Kn-1jSOgSLqOPsbs1CAyCVQ",
+  authDomain: "smart-bariwala-56ce4.firebaseapp.com",
+  databaseURL: "https://smart-bariwala-56ce4-default-rtdb.firebaseio.com",
+  projectId: "smart-bariwala-56ce4",
+  storageBucket: "smart-bariwala-56ce4.firebasestorage.app",
+  messagingSenderId: "858396286622",
+  appId: "1:858396286622:web:95942360c9c3e72098e58f",
+  measurementId: "G-6ZQXWEPV2C"
 };
+
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-const dbRef = firebase.database();
+const database = firebase.database();
 
-let db = {
-    tenants: [],
-    bills: [],
-    units: [],
-    users: [{id:'Admin', pass:'724672', role:'admin'}],
-    settings: {
-        title:'স্মার্ট বাড়িওয়ালা',
-        managerName:'',
-        managerRole:'পরিচালক',
-        managerPhone:'',
-        developerSite:'https://smartcomputer-bd.github.io/com/',
-        managerSign:''
-    },
-    theme: false
-};
+let db={tenants:[],bills:[],units:[],users:[{id:'Admin',pass:'724672',role:'admin'}],settings:{title:'স্মার্ট বাড়িওয়ালা',managerName:'',managerRole:'পরিচালক',managerPhone:'',developerSite:'https://smartcomputer-bd.github.io/com/',managerSign:''},theme:false};
+let currentUser=null,photoData='',signData='';
+const $=id=>document.getElementById(id);
 
-let currentUser = null, photoData = '', signData = '';
-const $ = id => document.getElementById(id);
-
-// --- FIREBASE REALTIME SYNC LISTENER ---
-dbRef.ref('smart_house/').on('value', (snapshot) => {
-    const data = snapshot.val();
-    if (data) {
-        db.tenants = data.tenants ? Object.values(data.tenants) : [];
-        db.bills = data.bills ? Object.values(data.bills) : [];
-        db.units = data.units ? Object.values(data.units) : [];
-        db.users = data.users ? Object.values(data.users) : [{id:'Admin', pass:'724672', role:'admin'}];
-        db.settings = data.settings || db.settings;
-        if(data.theme !== undefined) db.theme = data.theme;
-        renderAll();
+// Load data from Firebase Realtime Database
+function loadDB(){
+  database.ref('rentflow_data').once('value').then(snapshot => {
+    const x = snapshot.val();
+    if(x) {
+      db = {
+        tenants: x.tenants || [],
+        bills: x.bills || [],
+        units: x.units || [],
+        users: x.users || [{id:'Admin',pass:'724672',role:'admin'}],
+        settings: {...db.settings, ...(x.settings || {})},
+        theme: !!x.theme
+      };
     }
-});
+    authUI();
+    renderAll();
+  }).catch(err => {
+    console.error("Firebase load error: ", err);
+    authUI();
+    renderAll();
+  });
+}
 
-// Save Function updated to push to Firebase
-function saveDB() {
-    dbRef.ref('smart_house/').set(db);
+// Save data to Firebase Realtime Database
+function saveDB(){
+  database.ref('rentflow_data').set(db).then(() => {
+    renderAll();
+  }).catch(err => {
+    console.error("Firebase save error: ", err);
+    toast('ডেটা সংরক্ষণে সমস্যা হয়েছে');
+  });
 }
 
 function money(n){return '৳'+Number(n||0).toLocaleString('en-US',{maximumFractionDigits:2})}
@@ -196,500 +191,89 @@ function closeModal(id){$(id).classList.remove('show')}
 function openModal(id){$(id).classList.add('show')}
 function canAdmin(){return currentUser&&currentUser.role==='admin'}
 function authUI(){ $('login').style.display=currentUser?'none':'grid';$('app').style.display=currentUser?'block':'none';$('roleBadge').textContent=currentUser?(canAdmin()?'Admin':'User'):'Guest';$('settingsNav').style.display=canAdmin()?'':'none';if(currentUser&&!canAdmin()){$('page-settings').style.display='none'}else $('page-settings').style.display='';}
-
-$('loginForm').addEventListener('submit',e=>{
-    e.preventDefault();
-    const u=$('loginUser').value.trim(), p=$('loginPass').value;
-    const user=db.users.find(x=>x.id.toLowerCase()===u.toLowerCase()&&x.pass===p);
-    if(!user){toast('ইউজার আইডি অথবা পাসওয়ার্ড সঠিক নয়');return}
-    currentUser=user;
-    authUI();
-    renderAll();
-    toast('লগইন সফল হয়েছে');
-});
-
+$('loginForm').addEventListener('submit',e=>{e.preventDefault();const u=$('loginUser').value.trim(),p=$('loginPass').value;const user=db.users.find(x=>x.id.toLowerCase()===u.toLowerCase()&&x.pass===p);if(!user){toast('ইউজার আইডি অথবা পাসওয়ার্ড সঠিক নয়');return}currentUser=user;authUI();renderAll();toast('লগইন সফল হয়েছে')});
 $('logoutBtn').onclick=()=>{currentUser=null;authUI()};
 $('nav').addEventListener('click',e=>{const b=e.target.closest('button[data-page]');if(b)showPage(b.dataset.page)});
-
 function savedGroups(){return [...new Set((db.units||[]).map(u=>String(u.group||'সাধারণ').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b))}
 function fillGroupOptions(selected=''){const groups=[...new Set([...savedGroups(),selected].filter(Boolean))];$('groupOptions').innerHTML=groups.map(g=>`<option value="${esc(g)}"></option>`).join('');$('unitGroupOptions').innerHTML=groups.map(g=>`<option value="${esc(g)}"></option>`).join('')}
 function fillUnitOptions(selected='',group=''){const opts=[...new Set([...(db.units||[]).filter(u=>!group||String(u.group||'সাধারণ')===group).map(u=>u.name),...db.tenants.filter(t=>!group||String(t.group||'সাধারণ')===group).map(t=>t.unit),selected].filter(Boolean))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));$('tUnit').innerHTML='<option value="">ইউনিট / রুম নির্বাচন করুন</option>'+opts.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join('');$('tUnit').value=selected||''}
 $('tGroup').addEventListener('input',()=>fillUnitOptions('', $('tGroup').value.trim()));
-
-function openTenant(id=''){
-    if(!canAdmin()){toast('ভাড়াটিয়া পরিবর্তনের জন্য Admin প্রয়োজন');return}
-    const t=db.tenants.find(x=>x.id===id);
-    $('tenantForm').reset();
-    $('tenantId').value=t?.id||'';
-    photoData=t?.photo||'';
-    $('tenantModalTitle').textContent=t?'ভাড়াটিয়া এডিট':'নতুন ভাড়াটিয়া';
-    fillGroupOptions(t?.group||'');
-    $('tGroup').value=t?.group||'';
-    fillUnitOptions(t?.unit||'',t?.group||'');
-    ['tName','tPhone','tUnit','tRent','tAdvance','tMeterNo','tMeterBalance','tMeterUnit','tDue','tDueNote','tMoveDate'].forEach((f,i)=>{
-        const keys=['name','phone','unit','rent','advance','meterNo','meterBalance','meterUnit','due','dueNote','moveDate'];
-        $(f).value=t?.[keys[i]]??(['tAdvance','tMeterBalance','tMeterUnit','tDue'].includes(f)?0:'')
-    });
-    $('photoPreview').style.display=photoData?'block':'none';
-    if(photoData)$('photoPreview').src=photoData;
-    openModal('tenantModal')
-}
-
+function openTenant(id=''){if(!canAdmin()){toast('ভাড়াটিয়া পরিবর্তনের জন্য Admin প্রয়োজন');return}const t=db.tenants.find(x=>x.id===id);$('tenantForm').reset();$('tenantId').value=t?.id||'';photoData=t?.photo||'';$('tenantModalTitle').textContent=t?'ভাড়াটিয়া এডিট':'নতুন ভাড়াটিয়া';fillGroupOptions(t?.group||'');$('tGroup').value=t?.group||'';fillUnitOptions(t?.unit||'',t?.group||'');['tName','tPhone','tUnit','tRent','tAdvance','tMeterNo','tMeterBalance','tMeterUnit','tDue','tDueNote','tMoveDate'].forEach((f,i)=>{const keys=['name','phone','unit','rent','advance','meterNo','meterBalance','meterUnit','due','dueNote','moveDate'];$(f).value=t?.[keys[i]]??(['tAdvance','tMeterBalance','tMeterUnit','tDue'].includes(f)?0:'')});$('photoPreview').style.display=photoData?'block':'none';if(photoData)$('photoPreview').src=photoData;openModal('tenantModal')}
 $('tPhoto').addEventListener('change',e=>readImage(e.target.files[0],v=>{photoData=v;$('photoPreview').src=v;$('photoPreview').style.display='block'}));
 function readImage(file,cb){if(!file)return;const r=new FileReader();r.onload=()=>cb(r.result);r.readAsDataURL(file)}
-
-$('tenantForm').addEventListener('submit',e=>{
-    e.preventDefault();
-    const id=$('tenantId').value||('T'+Date.now());
-    const t={id,name:$('tName').value.trim(),phone:$('tPhone').value.trim(),group:$('tGroup').value.trim()||'সাধারণ',unit:$('tUnit').value.trim(),rent:+$('tRent').value,advance:+$('tAdvance').value||0,meterNo:$('tMeterNo').value,meterBalance:+$('tMeterBalance').value||0,meterUnit:+$('tMeterUnit').value||0,due:+$('tDue').value||0,dueNote:$('tDueNote').value,moveDate:$('tMoveDate').value,photo:photoData};
-    if(db.tenants.some(x=>String(x.unit||'').toLowerCase()===t.unit.toLowerCase()&&String(x.group||'সাধারণ').toLowerCase()===t.group.toLowerCase()&&x.id!==id)){toast('এই বাড়ির গ্রুপের এই ইউনিট/রুমে ভাড়াটিয়া আগে থেকেই আছে');return}
-    if(!(db.units||[]).some(u=>String(u.name||'').toLowerCase()===t.unit.toLowerCase()&&String(u.group||'সাধারণ').toLowerCase()===t.group.toLowerCase()))db.units.push({id:'U'+Date.now(),name:t.unit,group:t.group,note:''});
-    const i=db.tenants.findIndex(x=>x.id===id);
-    if(i>=0)db.tenants[i]=t;else db.tenants.push(t);
-    closeModal('tenantModal');
-    saveDB();
-    toast('ভাড়াটিয়ার তথ্য সেভ হয়েছে')
-});
-
+$('tenantForm').addEventListener('submit',e=>{e.preventDefault();const id=$('tenantId').value||('T'+Date.now());const t={id,name:$('tName').value.trim(),phone:$('tPhone').value.trim(),group:$('tGroup').value.trim()||'সাধারণ',unit:$('tUnit').value.trim(),rent:+$('tRent').value,advance:+$('tAdvance').value||0,meterNo:$('tMeterNo').value,meterBalance:+$('tMeterBalance').value||0,meterUnit:+$('tMeterUnit').value||0,due:+$('tDue').value||0,dueNote:$('tDueNote').value,moveDate:$('tMoveDate').value,photo:photoData};if(db.tenants.some(x=>String(x.unit||'').toLowerCase()===t.unit.toLowerCase()&&String(x.group||'সাধারণ').toLowerCase()===t.group.toLowerCase()&&x.id!==id)){toast('এই বাড়ির গ্রুপের এই ইউনিট/রুমে ভাড়াটিয়া আগে থেকেই আছে');return}if(!(db.units||[]).some(u=>String(u.name||'').toLowerCase()===t.unit.toLowerCase()&&String(u.group||'সাধারণ').toLowerCase()===t.group.toLowerCase()))db.units.push({id:'U'+Date.now(),name:t.unit,group:t.group,note:''});const i=db.tenants.findIndex(x=>x.id===id);if(i>=0)db.tenants[i]=t;else db.tenants.push(t);closeModal('tenantModal');saveDB();toast('ভাড়াটিয়ার তথ্য সেভ হয়েছে')});
 function tenantCard(t){return `<article class="tenant"><div style="padding:7px 13px 0;font-size:12px;font-weight:900;color:${(+t.due||0)>0?'#dc2626':'#16a34a'}"><span class="signal ${(+t.due||0)>0?'red':'green'}"></span>${(+t.due||0)>0?'বকেয়া আছে':'বকেয়া পরিশোধ / নেই'}</div><div class="tenant-head"><img class="avatar" src="${t.photo||''}" onerror="this.style.visibility='hidden'" alt=""><div style="min-width:0;flex:1"><div class="location-highlight"><div class="group-highlight">${esc(t.group||'সাধারণ')}</div><div class="room-highlight">${esc(t.unit)}</div></div><h3>${(+t.due||0)>0?'<span class="signal red" title="বকেয়া রয়েছে"></span>':''}${esc(t.name)}</h3><div class="muted" style="font-size:12px">${esc(t.phone)}</div></div></div><div class="tenant-body"><div class="facts"><div class="fact"><small>মাসিক ভাড়া</small><b>${money(t.rent)}</b></div><div class="fact"><small>অগ্রিম</small><b>${money(t.advance)}</b></div><div class="fact"><small>মিটার নম্বর</small><b>${esc(t.meterNo||'—')}</b></div><div class="fact"><small>মিটার ইউনিট</small><b>${Number(t.meterUnit||0).toLocaleString('en-US')}</b></div><div class="fact"><small>বকেয়া</small><b style="color:${(+t.due||0)>0?'#dc2626':'#16a34a'}"><span class="signal ${(+t.due||0)>0?'red':'green'}"></span>${money(t.due)}</b></div><div class="fact"><small>উঠার তারিখ</small><b>${dateFmt(t.moveDate)}</b></div></div><div class="actions"><button class="secondary" onclick="viewTenant('${t.id}')">👁 ভিউ</button><button class="ghost" onclick="openTenant('${t.id}')">✏ এডিট</button><button class="danger" onclick="deleteTenant('${t.id}')">🗑 ডিলিট</button><button class="success" onclick="callTenant('${t.phone}')">☎ কল</button><button class="success" onclick="waTenant('${t.id}')">WhatsApp</button><button class="ghost" onclick="printTenant('${t.id}')">A4 PDF</button></div></div></article>`}
-
-function renderTenants(){
-    let a=[...db.tenants],q=($('tenantSearch')?.value||'').toLowerCase(),s=$('tenantSort')?.value||'unit';
-    a=a.filter(t=>[t.name,t.phone,t.unit].some(v=>String(v||'').toLowerCase().includes(q)));
-    a.sort((x,y)=>s==='name'?x.name.localeCompare(y.name):s==='date'?String(y.moveDate).localeCompare(String(x.moveDate)):x.unit.localeCompare(y.unit,undefined,{numeric:true}));
-    $('tenantCards').innerHTML=a.length?a.map(tenantCard).join(''):'<div class="panel empty" style="grid-column:1/-1">এখনও কোনো ভাড়াটিয়া যোগ করা হয়নি। “নতুন ভাড়াটিয়া” বাটনে ক্লিক করুন।</div>'
-}
-
-function deleteTenant(id){
-    if(!canAdmin())return toast('Admin অনুমতি প্রয়োজন');
-    const t=db.tenants.find(x=>x.id===id);
-    if(confirm(`${t?.name||'এই ভাড়াটিয়া'}-কে মুছবেন? সংশ্লিষ্ট বিলগুলোও মুছে যাবে।`)){
-        db.tenants=db.tenants.filter(x=>x.id!==id);
-        db.bills=db.bills.filter(x=>x.tenantId!==id);
-        saveDB();
-        toast('ভাড়াটিয়া ও সংশ্লিষ্ট বিল মুছে ফেলা হয়েছে')
-    }
-}
-
+function renderTenants(){let a=[...db.tenants],q=($('tenantSearch')?.value||'').toLowerCase(),s=$('tenantSort')?.value||'unit';a=a.filter(t=>[t.name,t.phone,t.unit].some(v=>String(v||'').toLowerCase().includes(q)));a.sort((x,y)=>s==='name'?x.name.localeCompare(y.name):s==='date'?String(y.moveDate).localeCompare(String(x.moveDate)):x.unit.localeCompare(y.unit,undefined,{numeric:true}));$('tenantCards').innerHTML=a.length?a.map(tenantCard).join(''):'<div class="panel empty" style="grid-column:1/-1">এখনও কোনো ভাড়াটিয়া যোগ করা হয়নি। “নতুন ভাড়াটিয়া” বাটনে ক্লিক করুন।</div>'}
+function deleteTenant(id){if(!canAdmin())return toast('Admin অনুমতি প্রয়োজন');const t=db.tenants.find(x=>x.id===id);if(confirm(`${t?.name||'এই ভাড়াটিয়া'}-কে মুছবেন? সংশ্লিষ্ট বিলগুলোও মুছে যাবে।`)){db.tenants=db.tenants.filter(x=>x.id!==id);db.bills=db.bills.filter(x=>x.tenantId!==id);saveDB();toast('ভাড়াটিয়া ও সংশ্লিষ্ট বিল মুছে ফেলা হয়েছে')}}
 function callTenant(p){location.href='tel:'+p}
-function waTenant(id){const t=db.tenants.find(x=>x.id===id);if(t)window.open('https://wa.me/'+t.phone.replace(/\D/g,'')+'?text='+encodeURIComponent(`আসসালামু আলাইকুম ${t.name}, আপনার ইউনিট ${t.unit} সংক্রান্ত যোগাযোগের জন্য বার্তা পাঠানো হলো।`),'_blank')}
-
-function viewTenant(id){
-    const t=db.tenants.find(x=>x.id===id);if(!t)return;
-    $('viewTitle').textContent='ভাড়াটিয়ার প্রোফাইল';
-    $('viewContent').innerHTML=`<div class="tenant-head" style="border-radius:15px"><img class="avatar" src="${t.photo||''}" onerror="this.style.visibility='hidden'"><div><div class="location-highlight"><div class="group-highlight">${esc(t.group||'সাধারণ')}</div><div class="room-highlight">${esc(t.unit)}</div></div><h3>${esc(t.name)}</h3><p>${esc(t.phone)}</p></div></div><div style="padding:7px 15px;color:${(+t.due||0)>0?'#dc2626':'#16a34a'};font-weight:900"><span class="signal ${(+t.due||0)>0?'red':'green'}"></span>${(+t.due||0)>0?'বকেয়া আছে':'বকেয়া পরিশোধ / নেই'}</div><div class="facts" style="padding:15px">${[['মাসিক ভাড়া',money(t.rent)],['অগ্রিম',money(t.advance)],['মিটার নম্বর',t.meterNo],['মিটার ব্যালেন্স',money(t.meterBalance)],['মিটার ইউনিট',t.meterUnit],['বকেয়া',money(t.due)],['বকেয়ার বিষয়',t.dueNote],['উঠার তারিখ',dateFmt(t.moveDate)],['সর্বশেষ জমা',t.payments?.length?money(t.payments[t.payments.length-1].amount):'—']].map(x=>`<div class="fact"><small>${x[0]}</small><b>${esc(x[1]??'—')}</b></div>`).join('')}</div>${t.payments?.length?`<div style="padding:0 15px 12px"><h4>বকেয়া জমার ইতিহাস</h4><div class="tablewrap"><table style="min-width:0"><thead><tr><th>তারিখ</th><th>জমা</th><th>অবশিষ্ট</th></tr></thead><tbody>${t.payments.slice().reverse().map(p=>`<tr><td>${new Date(p.date).toLocaleString('en-GB',{hour12:true})}</td><td>${money(p.amount)}</td><td>${money(p.remaining)}</td></tr>`).join('')}</tbody></table></div></div>`:''}<div class="actions"><button class="primary" onclick="printTenant('${id}')">A4 PDF / Print</button><button class="secondary" onclick="viewTenantHistory('${id}')">📚 হিস্টোরি</button><button class="secondary" onclick="openTenant('${id}');closeModal('viewModal')">এডিট</button><button class="success" onclick="waTenant('${id}')">WhatsApp</button></div>`;
-    openModal('viewModal')
-}
-
+function waTenant(id){const t=db.tenants.find(x=>x.id===id);if(t)window.open('https://wa.me/'+t.phone.replace(/\D/g, '')+'?text='+encodeURIComponent(`আসসালামু আলাইকুম ${t.name}, আপনার ইউনিট ${t.unit} সংক্রান্ত যোগাযোগের জন্য বার্তা পাঠানো হলো।`),'_blank')}
+function viewTenant(id){const t=db.tenants.find(x=>x.id===id);if(!t)return;$('viewTitle').textContent='ভাড়াটিয়ার প্রোফাইল';$('viewContent').innerHTML=`<div class="tenant-head" style="border-radius:15px"><img class="avatar" src="${t.photo||''}" onerror="this.style.visibility='hidden'"><div><div class="location-highlight"><div class="group-highlight">${esc(t.group||'সাধারণ')}</div><div class="room-highlight">${esc(t.unit)}</div></div><h3>${esc(t.name)}</h3><p>${esc(t.phone)}</p></div></div><div style="padding:7px 15px;color:${(+t.due||0)>0?'#dc2626':'#16a34a'};font-weight:900"><span class="signal ${(+t.due||0)>0?'red':'green'}"></span>${(+t.due||0)>0?'বকেয়া আছে':'বকেয়া পরিশোধ / নেই'}</div><div class="facts" style="padding:15px">${[['মাসিক ভাড়া',money(t.rent)],['অগ্রিম',money(t.advance)],['মিটার নম্বর',t.meterNo],['মিটার ব্যালেন্স',money(t.meterBalance)],['মিটার ইউনিট',t.meterUnit],['বকেয়া',money(t.due)],['বকেয়ার বিষয়',t.dueNote],['উঠার তারিখ',dateFmt(t.moveDate)],['সর্বশেষ জমা',t.payments?.length?money(t.payments[t.payments.length-1].amount):'—']].map(x=>`<div class="fact"><small>${x[0]}</small><b>${esc(x[1]??'—')}</b></div>`).join('')}</div>${t.payments?.length?`<div style="padding:0 15px 12px"><h4>বকেয়া জমার ইতিহাস</h4><div class="tablewrap"><table style="min-width:0"><thead><tr><th>তারিখ</th><th>জমা</th><th>অবশিষ্ট</th></tr></thead><tbody>${t.payments.slice().reverse().map(p=>`<tr><td>${new Date(p.date).toLocaleString('en-GB',{hour12:true})}</td><td>${money(p.amount)}</td><td>${money(p.remaining)}</td></tr>`).join('')}</tbody></table></div></div>`:''}<div class="actions"><button class="primary" onclick="printTenant('${id}')">A4 PDF / Print</button><button class="secondary" onclick="viewTenantHistory('${id}')">📚 হিস্টোরি</button><button class="secondary" onclick="openTenant('${id}');closeModal('viewModal')">এডিট</button><button class="success" onclick="waTenant('${id}')">WhatsApp</button></div>`;openModal('viewModal')}
 function qrMarkup(payload,size=96){const s=db.settings||{};const verifiedPayload={software:'স্মার্ট বাড়িওয়ালা',generatedAt:new Date().toISOString(),director:{name:s.managerName||'',designation:s.managerRole||'পরিচালক',mobile:s.managerPhone||''},document:payload};const packed=JSON.stringify(verifiedPayload);const base=location.href.split('#')[0];const data=/^https?:$/.test(location.protocol)?base+'#verify='+encodeURIComponent(packed):packed;const src='https://api.qrserver.com/v1/create-qr-code/?size='+size+'x'+size+'&data='+encodeURIComponent(data);return `<div class="qr-stamp"><img src="${src}" alt="QR Code"><small>স্ক্যান করে তথ্য যাচাই করুন</small></div>`}
 function printAuthorityFooter(payload,size=96){const s=db.settings||{};return `<div class="print-authority"><div class="print-authority-info"><div class="print-authority-text"><b>পরিচালক:</b> ${esc(s.managerName||'নাম উল্লেখ নেই')}<br><b>পদবী:</b> ${esc(s.managerRole||'পরিচালক')}<br><b>মোবাইল:</b> ${esc(s.managerPhone||'উল্লেখ নেই')}</div><div class="print-authority-sign">${s.managerSign?`<img src="${s.managerSign}" alt="পরিচালকের স্বাক্ষর">`:''}<div class="sign-line">পরিচালকের স্বাক্ষর</div></div></div>${qrMarkup(payload,size)}</div><div class="printfoot">স্মার্ট বাড়িওয়ালা সফটওয়্যার দ্বারা প্রস্তুত • QR কোডে সংরক্ষিত তথ্য যাচাই করুন • ${esc(s.developerSite||'')}</div>`}
 function printWhenReady(mode){const root=mode==='printing-profile'?$('profilePrint'):$('printArea');document.body.classList.add(mode);const imgs=[...root.querySelectorAll('img')];const wait=Promise.all(imgs.map(img=>img.complete?Promise.resolve():new Promise(resolve=>{img.onload=resolve;img.onerror=resolve;setTimeout(resolve,2500)})));wait.then(()=>{window.print();setTimeout(()=>document.body.classList.remove(mode),1000)});}
 function tenantBills(id){return sortBills(db.bills.filter(b=>b.tenantId===id||(!b.tenantId&&String(b.tenantName||'')===String(db.tenants.find(t=>t.id===id)?.name||'')))).slice().sort((a,b)=>monthInputValue(a.month).localeCompare(monthInputValue(b.month)))}
-
-function viewTenantHistory(id){
-    const t=db.tenants.find(x=>x.id===id);if(!t)return;
-    const arr=tenantBills(id);
-    $('viewTitle').textContent='ভাড়াটিয়ার মাসভিত্তিক বিল হিস্টোরি';
-    const rows=arr.map(b=>`<tr><td>${esc(b.month)}</td><td>${esc(b.meterNo||t.meterNo||'—')}</td><td>${Number(b.prevUnit||0).toLocaleString('en-US')}</td><td>${Number(b.currentUnit||0).toLocaleString('en-US')}</td><td>${Number(b.units||0).toLocaleString('en-US')}</td><td>${money(b.rent)}</td><td>${money(b.total)}</td><td>${money(b.paid||0)}</td><td>${money(b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0)))}</td><td><button class="primary" onclick="printBill('${b.id}')">প্রিন্ট</button></td></tr>`).join('');
-    $('viewContent').innerHTML=`<div class="tenant-head" style="border-radius:15px"><div style="flex:1"><div class="location-highlight"><div class="group-highlight">${esc(t.group||'সাধারণ')}</div><div class="room-highlight">${esc(t.unit)}</div></div><h3>${esc(t.name)}</h3><div>${esc(t.phone||'')}</div><div>মিটার নম্বর: <b>${esc(t.meterNo||'—')}</b></div></div></div><div class="toolbar"><button class="primary" onclick="printTenantHistory('${t.id}')">🖨 সকল মাসের হিস্টোরি প্রিন্ট</button></div>${arr.length?`<div class="tablewrap"><table><thead><tr><th>মাস</th><th>মিটার</th><th>পূর্বের ইউনিট</th><th>বর্তমান ইউনিট</th><th>ব্যবহৃত</th><th>ভাড়া</th><th>মোট বিল</th><th>জমা</th><th>বকেয়া</th><th>অ্যাকশন</th></tr></thead><tbody>${rows}</tbody></table></div>`:'<div class="empty">এই ভাড়াটিয়ার কোনো মাসিক বিল পাওয়া যায়নি।</div>'}`;
-    openModal('viewModal')
-}
-
-function printTenantHistory(id){
-    const t=db.tenants.find(x=>x.id===id);if(!t)return;
-    const arr=tenantBills(id), payload={type:'tenant-bill-history',tenant:t.name,group:t.group||'সাধারণ',unit:t.unit,meterNo:t.meterNo,bills:arr.map(b=>({month:b.month,previousUnit:b.prevUnit,currentUnit:b.currentUnit,usedUnits:b.units,rent:b.rent,total:b.total,paid:b.paid||0,due:b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0))}))};
-    $('profilePrint').innerHTML=`<div class="printpage"><div class="printhead"><div><h1>${esc(db.settings.title||'স্মার্ট বাড়িওয়ালা')}</h1><div>ভাড়াটিয়ার মাসভিত্তিক বিল হিস্টোরি</div><div>${esc(t.name)} • ${esc(t.phone||'')}</div></div><div class="location-highlight"><div class="group-highlight">${esc(t.group||'সাধারণ')}</div><div class="room-highlight">${esc(t.unit)}</div></div></div><div class="printbox" style="margin-top:6px"><b>মিটার নম্বর</b><span>${esc(t.meterNo||'—')}</span></div><table class="printtable history-print-table"><thead><tr><th>মাস</th><th>পূর্বের</th><th>বর্তমান</th><th>ব্যবহৃত</th><th>ভাড়া</th><th>মোট বিল</th><th>জমা</th><th>বকেয়া</th></tr></thead><tbody>${arr.map(b=>`<tr><td>${esc(b.month)}</td><td>${Number(b.prevUnit||0)}</td><td>${Number(b.currentUnit||0)}</td><td>${Number(b.units||0)}</td><td>${money(b.rent)}</td><td>${money(b.total)}</td><td>${money(b.paid||0)}</td><td>${money(b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0)))}</td></tr>`).join('')}</tbody></table>${printAuthorityFooter(payload,88)}</div>`;
-    printWhenReady('printing-profile')
-}
-
-function printTenant(id){
-    const t=db.tenants.find(x=>x.id===id);if(!t)return;
-    const s=db.settings;
-    $('profilePrint').innerHTML=`<div class="printpage"><div class="printhead"><div><h1>${esc(s.title)}</h1><div>ভাড়াটিয়ার প্রোফাইল / Tenant Profile</div></div><div class="location-highlight"><div class="group-highlight">${esc(t.group||'সাধারণ')}</div><div class="room-highlight">${esc(t.unit)}</div></div></div><div class="profile-layout"><div class="printgrid"><div class="printbox"><b>ভাড়াটিয়ার নাম</b><span>${esc(t.name)}</span></div><div class="printbox"><b>মোবাইল নম্বর</b><span>${esc(t.phone)}</span></div><div class="printbox"><b>মাসিক বাসা ভাড়া</b><span>${money(t.rent)}</span></div><div class="printbox"><b>অগ্রিম জমা</b><span>${money(t.advance)}</span></div><div class="printbox"><b>মিটার নম্বর</b><span>${esc(t.meterNo||'—')}</span></div><div class="printbox"><b>মিটার ব্যালেন্স / ইউনিট</b><span>${money(t.meterBalance)} / ${t.meterUnit}</span></div><div class="printbox"><b>বকেয়া</b><span>${money(t.due)} — ${esc(t.dueNote||'')}</span></div><div class="printbox"><b>উঠার তারিখ</b><span>${dateFmt(t.moveDate)}</span></div></div><div>${t.photo?`<img class="profile-photo" src="${t.photo}" alt="ভাড়াটিয়ার ছবি">`:`<div class="profile-photo" style="display:grid;place-items:center;font-size:10px;text-align:center">ছবি নেই</div>`}</div></div>${printAuthorityFooter({type:'tenant-profile',name:t.name,phone:t.phone,group:t.group||'সাধারণ',unit:t.unit,rent:t.rent,advance:t.advance,meterNo:t.meterNo,meterUnit:t.meterUnit,due:t.due,moveDate:t.moveDate},88)}`;
-    printWhenReady('printing-profile')
-}
-
-function openBill(id=''){
-    if(!canAdmin()){toast('বিল পরিবর্তনের জন্য Admin প্রয়োজন');return}
-    const b=db.bills.find(x=>x.id===id);
-    $('billForm').reset();
-    $('billId').value=b?.id||'';
-    $('billModalTitle').textContent=b?'বিল এডিট':'নতুন বিল তৈরি';
-    $('bMonth').value=b?.month?monthInputValue(b.month):currentMonth();
-    $('bTenant').innerHTML='<option value="">ভাড়াটিয়া নির্বাচন করুন</option>'+db.tenants.slice().sort((a,b)=>a.unit.localeCompare(b.unit,undefined,{numeric:true})).map(t=>`<option value="${t.id}">${esc(t.name)} — ${esc(t.group||'সাধারণ')} • ${esc(t.unit)}</option>`).join('');
-    $('bTenant').value=b?.tenantId||'';
-    if(b){
-        ['bName','bPhone','bUnit','bRent','bPrevUnit','bCurrentUnit','bUnitPrice','bWater','bOther','bOtherNote','bDue','bDueNote','bPaid'].forEach((f,i)=>{
-            const k=['tenantName','phone','unit','rent','prevUnit','currentUnit','unitPrice','water','other','otherNote','due','dueNote','paid'][i];
-            $(f).value=b[k]??0
-        })
-    } else if(db.tenants.length===1)$('bTenant').value=db.tenants[0].id;
-    fillBillTenant();
-    calcBill();
-    openModal('billModal')
-}
-
+function viewTenantHistory(id){const t=db.tenants.find(x=>x.id===id);if(!t)return;const arr=tenantBills(id);$('viewTitle').textContent='ভাড়াটিয়ার মাসভিত্তিক বিল হিস্টোরি';const rows=arr.map(b=>`<tr><td>${esc(b.month)}</td><td>${esc(b.meterNo||t.meterNo||'—')}</td><td>${Number(b.prevUnit||0).toLocaleString('en-US')}</td><td>${Number(b.currentUnit||0).toLocaleString('en-US')}</td><td>${Number(b.units||0).toLocaleString('en-US')}</td><td>${money(b.rent)}</td><td>${money(b.total)}</td><td>${money(b.paid||0)}</td><td>${money(b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0)))}</td><td><button class="primary" onclick="printBill('${b.id}')">প্রিন্ট</button></td></tr>`).join('');$('viewContent').innerHTML=`<div class="tenant-head" style="border-radius:15px"><div style="flex:1"><div class="location-highlight"><div class="group-highlight">${esc(t.group||'সাধারণ')}</div><div class="room-highlight">${esc(t.unit)}</div></div><h3>${esc(t.name)}</h3><div>${esc(t.phone||'')}</div><div>মিটার নম্বর: <b>${esc(t.meterNo||'—')}</b></div></div></div><div class="toolbar"><button class="primary" onclick="printTenantHistory('${t.id}')">🖨 সকল মাসের হিস্টোরি প্রিন্ট</button></div>${arr.length?`<div class="tablewrap"><table><thead><tr><th>মাস</th><th>মিটার</th><th>পূর্বের ইউনিট</th><th>বর্তমান ইউনিট</th><th>ব্যবহৃত</th><th>ভাড়া</th><th>মোট বিল</th><th>জমা</th><th>বকেয়া</th><th>অ্যাকশন</th></tr></thead><tbody>${rows}</tbody></table></div>`:'<div class="empty">এই ভাড়াটিয়ার কোনো মাসিক বিল পাওয়া যায়নি।</div>'}`;openModal('viewModal')}
+function printTenantHistory(id){const t=db.tenants.find(x=>x.id===id);if(!t)return;const arr=tenantBills(id),payload={type:'tenant-bill-history',tenant:t.name,group:t.group||'সাধারণ',unit:t.unit,meterNo:t.meterNo,bills:arr.map(b=>({month:b.month,previousUnit:b.prevUnit,currentUnit:b.currentUnit,usedUnits:b.units,rent:b.rent,total:b.total,paid:b.paid||0,due:b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0))}))};$('profilePrint').innerHTML=`<div class="printpage"><div class="printhead"><div><h1>${esc(db.settings.title||'স্মার্ট বাড়িওয়ালা')}</h1><div>ভাড়াটিয়ার মাসভিত্তিক বিল হিস্টোরি</div><div>${esc(t.name)} • ${esc(t.phone||'')}</div></div><div class="location-highlight"><div class="group-highlight">${esc(t.group||'সাধারণ')}</div><div class="room-highlight">${esc(t.unit)}</div></div></div><div class="printbox" style="margin-top:6px"><b>মিটার নম্বর</b><span>${esc(t.meterNo||'—')}</span></div><table class="printtable history-print-table"><thead><tr><th>মাস</th><th>পূর্বের</th><th>বর্তমান</th><th>ব্যবহৃত</th><th>ভাড়া</th><th>মোট বিল</th><th>জমা</th><th>বকেয়া</th></tr></thead><tbody>${arr.map(b=>`<tr><td>${esc(b.month)}</td><td>${Number(b.prevUnit||0)}</td><td>${Number(b.currentUnit||0)}</td><td>${Number(b.units||0)}</td><td>${money(b.rent)}</td><td>${money(b.total)}</td><td>${money(b.paid||0)}</td><td>${money(b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0)))}</td></tr>`).join('')}</tbody></table>${printAuthorityFooter(payload,88)}</div>`;printWhenReady('printing-profile')}
+function printTenant(id){const t=db.tenants.find(x=>x.id===id);if(!t)return;const s=db.settings;$('profilePrint').innerHTML=`<div class="printpage"><div class="printhead"><div><h1>${esc(s.title)}</h1><div>ভাড়াটিয়ার প্রোফাইল / Tenant Profile</div></div><div class="location-highlight"><div class="group-highlight">${esc(t.group||'সাধারণ')}</div><div class="room-highlight">${esc(t.unit)}</div></div></div><div class="profile-layout"><div class="printgrid"><div class="printbox"><b>ভাড়াটিয়ার নাম</b><span>${esc(t.name)}</span></div><div class="printbox"><b>মোবাইল নম্বর</b><span>${esc(t.phone)}</span></div><div class="printbox"><b>মাসিক বাসা ভাড়া</b><span>${money(t.rent)}</span></div><div class="printbox"><b>অগ্রিম জমা</b><span>${money(t.advance)}</span></div><div class="printbox"><b>মিটার নম্বর</b><span>${esc(t.meterNo||'—')}</span></div><div class="printbox"><b>মিটার ব্যালেন্স / ইউনিট</b><span>${money(t.meterBalance)} / ${t.meterUnit}</span></div><div class="printbox"><b>বকেয়া</b><span>${money(t.due)} — ${esc(t.dueNote||'')}</span></div><div class="printbox"><b>উঠার তারিখ</b><span>${dateFmt(t.moveDate)}</span></div></div><div>${t.photo?`<img class="profile-photo" src="${t.photo}" alt="ভাড়াটিয়ার ছবি">`:`<div class="profile-photo" style="display:grid;place-items:center;font-size:10px;text-align:center">ছবি নেই</div>`}</div></div>${printAuthorityFooter({type:'tenant-profile',name:t.name,phone:t.phone,group:t.group||'সাধারণ',unit:t.unit,rent:t.rent,advance:t.advance,meterNo:t.meterNo,meterUnit:t.meterUnit,due:t.due,moveDate:t.moveDate},88)}`;printWhenReady('printing-profile')}
+function openBill(id=''){if(!canAdmin()){toast('বিল পরিবর্তনের জন্য Admin প্রয়োজন');return}const b=db.bills.find(x=>x.id===id);$('billForm').reset();$('billId').value=b?.id||'';$('billModalTitle').textContent=b?'বিল এডিট':'নতুন বিল তৈরি';$('bMonth').value=b?.month?monthInputValue(b.month):currentMonth();$('bTenant').innerHTML='<option value="">ভাড়াটিয়া নির্বাচন করুন</option>'+db.tenants.slice().sort((a,b)=>a.unit.localeCompare(b.unit,undefined,{numeric:true})).map(t=>`<option value="${t.id}">${esc(t.name)} — ${esc(t.group||'সাধারণ')} • ${esc(t.unit)}</option>`).join('');$('bTenant').value=b?.tenantId||'';if(b){['bName','bPhone','bUnit','bRent','bPrevUnit','bCurrentUnit','bUnitPrice','bWater','bOther','bOtherNote','bDue','bDueNote','bPaid'].forEach((f,i)=>{const k=['tenantName','phone','unit','rent','prevUnit','currentUnit','unitPrice','water','other','otherNote','due','dueNote','paid'][i];$(f).value=b[k]??0})}else if(db.tenants.length===1)$('bTenant').value=db.tenants[0].id;fillBillTenant();calcBill();openModal('billModal')}
 $('bTenant').addEventListener('change',fillBillTenant);
-function fillBillTenant(){
-    const t=db.tenants.find(x=>x.id===$('bTenant').value), b=db.bills.find(x=>x.id===$('billId').value);
-    $('bName').value=t?.name||b?.tenantName||'';
-    $('bPhone').value=t?.phone||b?.phone||'';
-    $('bUnit').value=t?.unit||b?.unit||'';
-    if(t&&!b){
-        $('bRent').value=t.rent;
-        $('bPrevUnit').value=t.meterUnit;
-        $('bCurrentUnit').value=t.meterUnit;
-        $('bDue').value=t.due;
-        $('bDueNote').value=t.dueNote||'';
-        $('bPaid').value=0
-    }
-    calcBill()
-}
-
+function fillBillTenant(){const t=db.tenants.find(x=>x.id===$('bTenant').value),b=db.bills.find(x=>x.id===$('billId').value);$('bName').value=t?.name||b?.tenantName||'';$('bPhone').value=t?.phone||b?.phone||'';$('bUnit').value=t?.unit||b?.unit||'';if(t&&!b){$('bRent').value=t.rent;$('bPrevUnit').value=t.meterUnit;$('bCurrentUnit').value=t.meterUnit;$('bDue').value=t.due;$('bDueNote').value=t.dueNote||'';$('bPaid').value=0}calcBill()}
 ['bRent','bPrevUnit','bCurrentUnit','bUnitPrice','bWater','bOther','bDue','bPaid'].forEach(id=>$(id).addEventListener('input',calcBill));
-
-function billAmounts(){
-    const units=Math.max(0,(+$('bCurrentUnit').value||0)-(+ $('bPrevUnit').value||0)), electric=units*(+$('bUnitPrice').value||0), rent=+$('bRent').value||0, water=+$('bWater').value||0, other=+$('bOther').value||0, due=+$('bDue').value||0, paid=Math.max(0,+$('bPaid').value||0), total=rent+electric+water+other+due;
-    return {units,electric,rent,water,other,due,paid,total,remainingDue:Math.max(0,total-paid)}
-}
-
-function calcBill(){
-    const a=billAmounts();
-    if($('billCalc'))$('billCalc').innerHTML=`মোট ইউনিট: <b>${a.units.toLocaleString('en-US')}</b> &nbsp;•&nbsp; বিদ্যুৎ: <b>${money(a.electric)}</b><br>ভাড়া ${money(a.rent)} + বিদ্যুৎ ${money(a.electric)} + পানি ${money(a.water)} + অন্যান্য ${money(a.other)} + পূর্বের বকেয়া ${money(a.due)}<hr style="border:0;border-top:1px solid #d5ddf0"><span style="font-size:18px;color:#2445a3;font-weight:900">সর্বমোট: ${money(a.total)}</span><br>জমা: <b style="color:#15803d">${money(a.paid)}</b> • অবশিষ্ট বকেয়া: <b style="color:${a.remainingDue>0?'#dc2626':'#16a34a'}">${money(a.remainingDue)}</b>`
-}
-
-$('billForm').addEventListener('submit',e=>{
-    e.preventDefault();
-    const tenant=db.tenants.find(t=>t.id===$('bTenant').value);
-    if(!tenant)return toast('ভাড়াটিয়া নির্বাচন করুন');
-    const id=$('billId').value||('B'+Date.now()), month=monthFmt($('bMonth').value), duplicate=db.bills.find(x=>x.tenantId===tenant.id&&x.month===month&&x.id!==id);
-    if(duplicate){toast('এই ভাড়াটিয়ার এই মাসের বিল আগে তৈরি হয়েছে');return}
-    const a=billAmounts();
-    if(+$('bCurrentUnit').value<+$('bPrevUnit').value){toast('বর্তমান মিটার ইউনিট পূর্বের ইউনিটের চেয়ে কম হতে পারবে না');return}
-    if(a.paid>a.total){toast('জমার পরিমাণ সর্বমোট বিলের চেয়ে বেশি হতে পারবে না');return}
-    const old=db.bills.find(x=>x.id===id);
-    const b={id,tenantId:tenant.id,tenantName:tenant.name,phone:tenant.phone,unit:tenant.unit,month,rent:a.rent,prevUnit:+$('bPrevUnit').value,currentUnit:+$('bCurrentUnit').value,units:a.units,unitPrice:+$('bUnitPrice').value,electric:a.electric,water:a.water,other:a.other,otherNote:$('bOtherNote').value,due:a.due,dueNote:$('bDueNote').value,total:a.total,paid:a.paid,remainingDue:a.remainingDue,createdAt:old?.createdAt||new Date().toISOString()};
-    const i=db.bills.findIndex(x=>x.id===id);
-    if(i>=0)db.bills[i]=b;else db.bills.push(b);
-    tenant.meterUnit=b.currentUnit;
-    tenant.due=b.remainingDue;
-    tenant.dueNote=b.remainingDue>0?(b.dueNote||'বিলের অবশিষ্ট বকেয়া'):'বকেয়া পরিশোধ';
-    tenant.group=tenant.group||((db.units||[]).find(u=>u.name===tenant.unit)?.group)||'সাধারণ';
-    closeModal('billModal');
-    saveDB();
-    toast('বিল সেভ হয়েছে');
-    viewBill(b.id)
-});
-
+function billAmounts(){const units=Math.max(0,(+$('bCurrentUnit').value||0)-(+$('bPrevUnit').value||0)),electric=units*(+$('bUnitPrice').value||0),rent=+$('bRent').value||0,water=+$('bWater').value||0,other=+$('bOther').value||0,due=+$('bDue').value||0,paid=Math.max(0,+$('bPaid').value||0),total=rent+electric+water+other+due;return {units,electric,rent,water,other,due,paid,total,remainingDue:Math.max(0,total-paid)}}
+function calcBill(){const a=billAmounts();if($('billCalc'))$('billCalc').innerHTML=`মোট ইউনিট: <b>${a.units.toLocaleString('en-US')}</b> &nbsp;•&nbsp; বিদ্যুৎ: <b>${money(a.electric)}</b><br>ভাড়া ${money(a.rent)} + বিদ্যুৎ ${money(a.electric)} + পানি ${money(a.water)} + অন্যান্য ${money(a.other)} + পূর্বের বকেয়া ${money(a.due)}<hr style="border:0;border-top:1px solid #d5ddf0"><span style="font-size:18px;color:#2445a3;font-weight:900">সর্বমোট: ${money(a.total)}</span><br>জমা: <b style="color:#15803d">${money(a.paid)}</b> • অবশিষ্ট বকেয়া: <b style="color:${a.remainingDue>0?'#dc2626':'#16a34a'}">${money(a.remainingDue)}</b>`}
+$('billForm').addEventListener('submit',e=>{e.preventDefault();const tenant=db.tenants.find(t=>t.id===$('bTenant').value);if(!tenant)return toast('ভাড়াটিয়া নির্বাচন করুন');const id=$('billId').value||('B'+Date.now()),month=monthFmt($('bMonth').value),duplicate=db.bills.find(x=>x.tenantId===tenant.id&&x.month===month&&x.id!==id);if(duplicate){toast('এই ভাড়াটিয়ার এই মাসের বিল আগে তৈরি হয়েছে');return}const a=billAmounts();if(+$('bCurrentUnit').value<+$('bPrevUnit').value){toast('বর্তমান মিটার ইউনিট পূর্বের ইউনিটের চেয়ে কম হতে পারবে না');return}if(a.paid>a.total){toast('জমার পরিমাণ সর্বমোট বিলের চেয়ে বেশি হতে পারবে না');return}const old=db.bills.find(x=>x.id===id);const b={id,tenantId:tenant.id,tenantName:tenant.name,phone:tenant.phone,unit:tenant.unit,month,rent:a.rent,prevUnit:+$('bPrevUnit').value,currentUnit:+$('bCurrentUnit').value,units:a.units,unitPrice:+$('bUnitPrice').value,electric:a.electric,water:a.water,other:a.other,otherNote:$('bOtherNote').value,due:a.due,dueNote:$('bDueNote').value,total:a.total,paid:a.paid,remainingDue:a.remainingDue,createdAt:old?.createdAt||new Date().toISOString()};const i=db.bills.findIndex(x=>x.id===id);if(i>=0)db.bills[i]=b;else db.bills.push(b);tenant.meterUnit=b.currentUnit;tenant.due=b.remainingDue;tenant.dueNote=b.remainingDue>0?(b.dueNote||'বিলের অবশিষ্ট বকেয়া'):'বকেয়া পরিশোধ';tenant.group=tenant.group||((db.units||[]).find(u=>u.name===tenant.unit)?.group)||'সাধারণ';closeModal('billModal');saveDB();toast('বিল সেভ হয়েছে');viewBill(b.id)});
 function sortBills(a){return a.sort((x,y)=>monthInputValue(y.month).localeCompare(monthInputValue(x.month))||x.unit.localeCompare(y.unit,undefined,{numeric:true}))}
-
-function tableBills(arr){
-    if(!arr.length)return '<div class="panel empty">কোনো বিল পাওয়া যায়নি।</div>';
-    return `<div class="tablewrap"><table><thead><tr><th>বিলের মাস</th><th>ভাড়াটিয়া</th><th>ইউনিট</th><th>সর্বমোট</th><th>অবশিষ্ট বকেয়া</th><th>তৈরির সময়</th><th>অ্যাকশন</th></tr></thead><tbody>${arr.map(b=>`<tr onclick="viewBill('${b.id}')"><td><span class="badge">${esc(b.month)}</span></td><td><span class="signal ${((db.tenants.find(t=>t.id===b.tenantId)?.due||0)>0)?'red':'green'}"></span>${esc(b.tenantName)}</td><td><div class="location-highlight"><div class="group-highlight" style="font-size:11px;padding:3px 6px">${esc(b.group||db.tenants.find(t=>t.id===b.tenantId)?.group||'সাধারণ')}</div><div class="room-highlight" style="font-size:16px;padding:3px 7px">${esc(b.unit)}</div></div></td><td><b>${money(b.total)}</b><div class="muted" style="font-size:11px">জমা: ${money(b.paid||0)}</div></td><td style="color:${(+((b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0))))>0)?'#dc2626':'#16a34a'};font-weight:900"><span class="signal ${(+((b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0))))>0)?'red':'green'}"></span>${money(b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0)))}</td><td>${new Date(b.createdAt).toLocaleString('en-GB',{hour12:true})}</td><td><button class="secondary" onclick="event.stopPropagation();viewBill('${b.id}')">ভিউ</button></td></tr>`).join('')}</tbody></table></div>`
-}
-
+function tableBills(arr){if(!arr.length)return '<div class="panel empty">কোনো বিল পাওয়া যায়নি।</div>';return `<div class="tablewrap"><table><thead><tr><th>বিলের মাস</th><th>ভাড়াটিয়া</th><th>ইউনিট</th><th>সর্বমোট</th><th>অবশিষ্ট বকেয়া</th><th>তৈরির সময়</th><th>অ্যাকশন</th></tr></thead><tbody>${arr.map(b=>`<tr onclick="viewBill('${b.id}')"><td><span class="badge">${esc(b.month)}</span></td><td><span class="signal ${((db.tenants.find(t=>t.id===b.tenantId)?.due||0)>0)?'red':'green'}"></span>${esc(b.tenantName)}</td><td><div class="location-highlight"><div class="group-highlight" style="font-size:11px;padding:3px 6px">${esc(b.group||db.tenants.find(t=>t.id===b.tenantId)?.group||'সাধারণ')}</div><div class="room-highlight" style="font-size:16px;padding:3px 7px">${esc(b.unit)}</div></div></td><td><b>${money(b.total)}</b><div class="muted" style="font-size:11px">জমা: ${money(b.paid||0)}</div></td><td style="color:${(+((b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0))))>0)?'#dc2626':'#16a34a'};font-weight:900"><span class="signal ${(+((b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0))))>0)?'red':'green'}"></span>${money(b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0)))}</td><td>${new Date(b.createdAt).toLocaleString('en-GB',{hour12:true})}</td><td><button class="secondary" onclick="event.stopPropagation();viewBill('${b.id}')">ভিউ</button></td></tr>`).join('')}</tbody></table></div>`}
 function collectionRows(){return db.tenants.map(t=>{const bs=sortBills(db.bills.filter(b=>b.tenantId===t.id||(!b.tenantId&&b.tenantName===t.name)));const latest=bs[0];const collected=bs.reduce((n,b)=>n+(+b.paid||0),0);const billDue=bs.reduce((n,b)=>n+(+(b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0)))||0),0);return {t,latest,collected,due:Math.max(+t.due||0,billDue),rent:+(latest?.rent??t.rent)||0,prev:latest?.prevUnit??'',current:latest?.currentUnit??'',units:latest?.units??''}})}
-
-function renderTotalCollection(){
-    const data=collectionRows();
-    $('totalCollectedTable').innerHTML=data.length?`<div class="tablewrap"><table><thead><tr><th>ভাড়াটিয়া</th><th>বাড়ির ক্যাটাগরি/গ্রুপ • ইউনিট/রুম</th><th>বাসা ভাড়া</th><th>মিটার ইউনিট (পূর্বে → বর্তমানে)</th><th>আদায়কৃত ভাড়া/জমা</th><th>অবশিষ্ট বকেয়া</th></tr></thead><tbody>${data.map(x=>`<tr><td>${esc(x.t.name)}</td><td><b>${esc(x.t.group||'সাধারণ')} • ${esc(x.t.unit)}</b></td><td>${money(x.rent)}</td><td>${x.prev!==''?Number(x.prev).toLocaleString('en-US'):'—'} → ${x.current!==''?Number(x.current).toLocaleString('en-US'):'—'} ${x.units!==''?`<small>(${Number(x.units).toLocaleString('en-US')} ব্যবহৃত)</small>`:''}</td><td>${money(x.collected)}</td><td style="color:${x.due>0?'#dc2626':'#15803d'};font-weight:900">${money(x.due)}</td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">ভাড়াটিয়া যোগ করলে হিসাব এখানে দেখা যাবে।'}
-
-function printTotalCollection(){
-    const data=collectionRows();
-    const payload={type:'total-collection-report',generatedAt:new Date().toISOString(),tenants:data.map(x=>({name:x.t.name,group:x.t.group||'সাধারণ',unit:x.t.unit,rent:x.rent,previousUnit:x.prev,currentUnit:x.current,usedUnits:x.units,collected:x.collected,due:x.due}))};
-    $('printArea').innerHTML=`<div class="printpage collection-print"><div class="printhead"><div><h1>${esc(db.settings.title||'স্মার্ট বাড়িওয়ালা')}</h1><div>মোট আদায় ও ভাড়াটিয়াভিত্তিক হিসাব</div><div style="font-size:9px">প্রিন্ট: ${new Date().toLocaleString('en-GB',{hour12:true})}</div></div><div style="font-size:12px;font-weight:bold">মোট ভাড়াটিয়া: ${data.length}</div></div><table class="printtable collection-print-table" style="--rowfont:${Math.max(3.5,7-Math.max(0,data.length-20)*0.07)}px;--rowpad:${Math.max(1,3-Math.max(0,data.length-20)*0.04)}px"><thead><tr><th>ভাড়াটিয়া</th><th>বাড়ির গ্রুপ • ইউনিট</th><th>ভাড়া</th><th>মিটার পূর্বে→বর্তমানে (ব্যবহৃত)</th><th>আদায়</th><th>বকেয়া</th></tr></thead><tbody>${data.map(x=>`<tr><td>${esc(x.t.name)}</td><td>${esc(x.t.group||'সাধারণ')} • ${esc(x.t.unit)}</td><td>${money(x.rent)}</td><td>${x.prev!==''?x.prev:'—'} → ${x.current!==''?x.current:'—'} (${x.units!==''?x.units:'—'})</td><td>${money(x.collected)}</td><td>${money(x.due)}</td></tr>`).join('')}</tbody></table>${printAuthorityFooter(payload,68)}</div>`;
-    printWhenReady('printing-bill')
-}
-
-function renderBills(){
-    const arr=sortBills([...db.bills]);
-    const q=($('billSearch')?.value||'').toLowerCase();
-    $('billTable').innerHTML=tableBills(arr.filter(b=>[b.month,b.tenantName,b.unit].some(x=>String(x).toLowerCase().includes(q))));
-    $('recentBills').innerHTML=tableBills(arr.slice(0,5));
-    renderTotalCollection()
-}
-
-function viewBill(id){
-    const b=db.bills.find(x=>x.id===id);if(!b)return;
-    const s=db.settings;
-    $('viewTitle').textContent=`${b.month} • ${b.unit} • বিল`;
-    const stamp=new Date(b.createdAt).toLocaleString('en-GB',{hour12:true});
-    $('viewContent').innerHTML=`<div class="printhead"><div><h2>${esc(s.title)}</h2><div>মাসিক ভাড়া রশিদ</div></div><div class="location-highlight"><div class="group-highlight">${esc(b.group||db.tenants.find(t=>t.id===b.tenantId)?.group||'সাধারণ')}</div><div class="room-highlight">${esc(b.unit)}</div></div></div><div class="facts" style="margin:15px 0">${[['ভাড়াটিয়া',b.tenantName],['মোবাইল',b.phone],['বিলের মাস',b.month],['তৈরির তারিখ ও সময়',stamp]].map(x=>`<div class="fact"><small>${x[0]}</small><b>${esc(x[1])}</b></div>`).join('')}</div><div class="tablewrap"><table style="min-width:0"><tbody>${[['বাসা ভাড়া',money(b.rent)],['বিদ্যুৎ ('+b.units+' ইউনিট × '+money(b.unitPrice)+')',money(b.electric)],['পানি বিল',money(b.water)],['অন্যান্য: '+(b.otherNote||'চার্জ'),money(b.other)],['পূর্বের বকেয়া: '+(b.dueNote||''),money(b.due)],['এই বিলের বিপরীতে জমা',money(b.paid||0)],['অবশিষ্ট বকেয়া',money(b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0))) ]].map(x=>`<tr><td>${esc(x[0])}</td><td style="text-align:right">${x[1]}</td></tr>`).join('')}<tr><th>সর্বমোট বিল</th><th style="text-align:right;font-size:18px">${money(b.total)}</th></tr><tr><th>জমা</th><th style="text-align:right;color:#15803d">${money(b.paid||0)}</th></tr><tr><th>অবশিষ্ট বকেয়া</th><th style="text-align:right;color:${(+((b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0))))>0)?'#dc2626':'#16a34a'}">${money(b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0)))}</th></tr></tbody></table></div><div class="actions"><button class="primary" onclick="printBill('${id}')">🖨 প্রিন্ট / PDF</button><button class="success" onclick="sendBill('${id}')">WhatsApp Send</button><button class="secondary" onclick="openBill('${id}');closeModal('viewModal')">✏ এডিট</button><button class="danger" onclick="deleteBill('${id}')">🗑 ডিলিট</button></div>`;
-    openModal('viewModal')
-}
-
-function printBill(id){
-    const b=db.bills.find(x=>x.id===id), s=db.settings;if(!b)return;
-    const payload={type:'rent-bill',billId:b.id,tenant:b.tenantName,group:b.group||db.tenants.find(t=>t.id===b.tenantId)?.group||'সাধারণ',unit:b.unit,month:b.month,total:b.total,rent:b.rent,meterNo:b.meterNo||db.tenants.find(t=>t.id===b.tenantId)?.meterNo,previousUnit:b.prevUnit,currentUnit:b.currentUnit,usedUnits:b.units,paid:b.paid||0,due:b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0)),createdAt:b.createdAt};
-    const packed=JSON.stringify(payload);
-    const qrData=/^https?:$/.test(location.protocol)?location.href.split('#')[0]+'#verify='+encodeURIComponent(packed):packed;
-    const qrUrl='https://api.qrserver.com/v1/create-qr-code/?size=160x160&data='+encodeURIComponent(qrData);
-    $('printArea').innerHTML=`<div class="printpage"><div class="printhead"><div><h1>${esc(s.title)}</h1><div>মাসিক ভাড়া রশিদ / RENT RECEIPT</div><div style="font-size:11px">রশিদ নং: ${esc(b.id)}</div></div><div class="location-highlight"><div class="group-highlight">${esc(payload.group)}</div><div class="room-highlight">${esc(b.unit)}</div></div></div><div class="printgrid"><div class="printbox"><b>ভাড়াটিয়ার নাম</b><span>${esc(b.tenantName)}</span></div><div class="printbox"><b>মোবাইল নম্বর</b><span>${esc(b.phone)}</span></div><div class="printbox"><b>বিলের মাস</b><span>${esc(b.month)}</span></div><div class="printbox"><b>বিল তৈরির তারিখ ও সময়</b><span>${new Date(b.createdAt).toLocaleString('en-GB',{hour12:true})}</span></div></div><table class="printtable"><thead><tr><th>বিবরণ</th><th>পরিমাণ</th><th>টাকা</th></tr></thead><tbody><tr><td>বাসা ভাড়া</td><td>১ মাস</td><td>${money(b.rent)}</td></tr><tr><td>বিদ্যুৎ বিল</td><td>${b.units} ইউনিট × ${money(b.unitPrice)}</td><td>${money(b.electric)}</td></tr><tr><td>পানি বিল</td><td>—</td><td>${money(b.water)}</td></tr><tr><td>অন্যান্য চার্জ — ${esc(b.otherNote||'—')}</td><td>—</td><td>${money(b.other)}</td></tr><tr><td>পূর্বের বকেয়া — ${esc(b.dueNote||'—')}</td><td>—</td><td>${money(b.due)}</td></tr><tr><td>জমা</td><td>—</td><td>− ${money(b.paid||0)}</td></tr></tbody></table><div class="printtotal">সর্বমোট বিল: ${money(b.total)}<br><span style="font-size:12px;color:${(+b.remainingDue||0)>0?'#dc2626':'#15803d'}">অবশিষ্ট বকেয়া: ${money(b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0)))}</span></div><div style="font-size:11px">মিটার রিডিং: পূর্বের ${b.prevUnit} • বর্তমান ${b.currentUnit} • ব্যবহৃত ${b.units} ইউনিট</div>${printAuthorityFooter(payload,88)}</div>`;
-    printWhenReady('printing-bill')
-}
-
-function sendBill(id){
-    const b=db.bills.find(x=>x.id===id);if(!b)return;
-    const msg=`🏠 *${db.settings.title} — মাসিক ভাড়া বিল*\\n━━━━━━━━━━━━━━\\n👤 ভাড়াটিয়া: ${b.tenantName}\\n🚪 ইউনিট/রুম: ${b.unit}\\n📅 বিলের মাস: ${b.month}\\n💰 বাসা ভাড়া: ${money(b.rent)}\\n⚡ বিদ্যুৎ (${b.units} ইউনিট): ${money(b.electric)}\\n🚰 পানি বিল: ${money(b.water)}\\n➕ অন্যান্য (${b.otherNote||'চার্জ'}): ${money(b.other)}\\n⏳ বকেয়া: ${money(b.due)}\\n━━━━━━━━━━━━━━\\n✅ *সর্বমোট: ${money(b.total)}*\\n🕒 তৈরি: ${new Date(b.createdAt).toLocaleString('en-GB',{hour12:true})}\\n\\nধন্যবাদ। কোনো তথ্যের অসঙ্গতি থাকলে অনুগ্রহ করে যোগাযোগ করুন।\\n${db.settings.managerName||''} ${db.settings.managerPhone||''}`;
-    window.open('https://wa.me/'+b.phone.replace(/\\D/g,'')+'?text='+encodeURIComponent(msg),'_blank')
-}
-
-function deleteBill(id){
-    if(!canAdmin())return;
-    if(confirm('এই বিলটি স্থায়ীভাবে মুছে ফেলবেন?')){
-        db.bills=db.bills.filter(x=>x.id!==id);
-        closeModal('viewModal');
-        saveDB();
-        toast('বিল মুছে ফেলা হয়েছে')
-    }
-}
-
-function renderDues(){
-    const arr=[...db.tenants].sort((a,b)=>(b.due||0)-(a.due||0));
-    $('dueTable').innerHTML=arr.length?`<div class="tablewrap"><table><thead><tr><th>ভাড়াটিয়া</th><th>ইউনিট</th><th>মাসিক ভাড়া</th><th>বকেয়া</th><th>বকেয়ার বিষয়</th><th>অ্যাকশন</th></tr></thead><tbody>${arr.map(t=>`<tr onclick="viewTenant('${t.id}')"><td>${esc(t.name)}</td><td><div class="location-highlight"><div class="group-highlight" style="font-size:11px;padding:3px 6px">${esc(t.group||'সাধারণ')}</div><div class="room-highlight" style="font-size:16px;padding:3px 7px">${esc(t.unit)}</div></div></td><td>${money(t.rent)}</td><td style="color:#dc2626;font-weight:bold">${money(t.due)}</td><td>${esc(t.dueNote||'—')}</td><td><button class="secondary" onclick="event.stopPropagation();recordPayment('${t.id}')">জমা নিন</button> <button class="success" onclick="event.stopPropagation();waTenant('${t.id}')">Send</button> <button class="ghost" onclick="event.stopPropagation();openTenant('${t.id}')">এডিট</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="panel empty">ভাড়াটিয়া যোগ করলে বকেয়ার হিসাব এখানে দেখা যাবে।'
-}
-
-function recordPayment(id){
-    const t=db.tenants.find(x=>x.id===id);if(!t)return;
-    if((+t.due||0)<=0){toast('এই ভাড়াটিয়ার বর্তমানে কোনো বকেয়া নেই');return}
-    const v=prompt(`${t.name} (${t.unit})\\nবর্তমান বকেয়া: ${money(t.due)}\\nকত টাকা জমা হয়েছে?`);
-    if(v===null)return;
-    const n=Number(v);
-    if(!Number.isFinite(n)||n<=0){toast('শূন্যের বেশি সঠিক পরিমাণ লিখুন');return}
-    if(n>(+t.due||0)){toast('জমার পরিমাণ বর্তমান বকেয়ার চেয়ে বেশি');return}
-    t.due=Math.max(0,(+t.due||0)-n);
-    t.payments=t.payments||[];
-    t.payments.push({date:new Date().toISOString(),amount:n,remaining:t.due});
-    const lastBill=sortBills(db.bills.filter(b=>b.tenantId===t.id))[0];
-    if(lastBill){lastBill.paid=(+lastBill.paid||0)+n;lastBill.remainingDue=t.due;}
-    saveDB();
-    if($('page-collected')?.classList.contains('active'))showCollectedTenant(id);
-    toast('জমা রেকর্ড হয়েছে; অবশিষ্ট '+money(t.due))
-}
-
-function renderDashboard(){
-    const m=monthFmt(currentMonth()), due=db.tenants.reduce((s,t)=>s+(+t.due||0),0), rent=db.tenants.reduce((s,t)=>s+(+t.rent||0),0), adv=db.tenants.reduce((s,t)=>s+(+t.advance||0),0);
-    $('statTenants').textContent=db.tenants.length.toLocaleString('en-US');
-    $('statRent').textContent=money(rent);
-    $('statDue').textContent=money(due);
-    $('statBills').textContent=db.bills.filter(b=>b.month===m).length.toLocaleString('en-US');
-    $('summaryPayable').textContent=money(rent+due);
-    $('summaryAdvance').textContent=money(adv);
-    const last=sortBills([...db.bills])[0];
-    $('summaryLast').textContent=last?`${last.tenantName} • ${last.month} • ${money(last.total)}`:'এখনও কোনো বিল নেই';
-    $('todayText').textContent='আজ: '+dateFmt(new Date().toISOString().slice(0,10))+' • চলতি মাস: '+m
-}
-
-function openUnitForm(id=''){
-    if(!canAdmin()){toast('ইউনিট পরিবর্তনের জন্য Admin প্রয়োজন');return}
-    const u=(db.units||[]).find(x=>x.id===id);
-    $('unitForm').reset();
-    $('unitId').value=u?.id||'';
-    $('unitModalTitle').textContent=u?'ইউনিট এডিট':'নতুন বাড়ির ইউনিট';
-    $('uName').value=u?.name||'';
-    $('uGroup').value=u?.group||'';
-    $('uNote').value=u?.note||'';
-    $('unitNameOptions').innerHTML=[...new Set((db.units||[]).map(x=>x.name).filter(Boolean))].map(n=>`<option value="${esc(n)}"></option>`).join('');
-    fillGroupOptions(u?.group||'');
-    openModal('unitModal')
-}
-
-$('unitForm').addEventListener('submit',e=>{
-    e.preventDefault();
-    const id=$('unitId').value||'U'+Date.now(), name=$('uName').value.trim(), group=$('uGroup').value.trim()||'সাধারণ', note=$('uNote').value.trim();
-    if(!name)return;
-    if((db.units||[]).some(u=>String(u.name||'').trim().toLocaleLowerCase()===name.toLocaleLowerCase()&&String(u.group||'সাধারণ').trim().toLocaleLowerCase()===group.toLocaleLowerCase()&&u.id!==id)){toast('এই বাড়ির ক্যাটাগরি/গ্রুপে একই ইউনিট/রুম আগে থেকেই আছে');return}
-    const old=(db.units||[]).find(u=>u.id===id);
-    if(old){
-        const prior=old.name, priorGroup=String(old.group||'সাধারণ'), affectedTenantIds=db.tenants.filter(t=>String(t.unit||'').toLocaleLowerCase()===String(prior).toLocaleLowerCase()&&String(t.group||'সাধারণ')===priorGroup).map(t=>t.id);
-        old.name=name;
-        old.group=group;
-        old.note=note;
-        db.tenants.forEach(t=>{if(affectedTenantIds.includes(t.id)){t.unit=name;t.group=group}});
-        db.bills.forEach(b=>{if(affectedTenantIds.includes(b.tenantId))b.unit=name})
-    } else db.units.push({id,name,group,note});
-    closeModal('unitModal');
-    saveDB();
-    toast('ইউনিটের তথ্য সেভ হয়েছে')
-});
-
-function deleteUnit(id){
-    if(!canAdmin())return;
-    const u=db.units.find(x=>x.id===id);
-    if(!u)return;
-    if(db.tenants.some(t=>t.unit===u.name&&String(t.group||'সাধারণ')===String(u.group||'সাধারণ'))){toast('এই ইউনিটে ভাড়াটিয়া আছে; আগে ভাড়াটিয়া অন্য ইউনিটে সরান');return}
-    if(confirm(`${u.name} ইউনিটটি মুছে ফেলবেন?`)){
-        db.units=db.units.filter(x=>x.id!==id);
-        saveDB();
-        toast('ইউনিট মুছে ফেলা হয়েছে')
-    }
-}
-
+function renderTotalCollection(){const data=collectionRows();$('totalCollectedTable').innerHTML=data.length?`<div class="tablewrap"><table><thead><tr><th>ভাড়াটিয়া</th><th>বাড়ির ক্যাটাগরি/গ্রুপ • ইউনিট/রুম</th><th>বাসা ভাড়া</th><th>মিটার ইউনিট (পূর্বে → বর্তমানে)</th><th>আদায়কৃত ভাড়া/জমা</th><th>অবশিষ্ট বকেয়া</th></tr></thead><tbody>${data.map(x=>`<tr><td>${esc(x.t.name)}</td><td><b>${esc(x.t.group||'সাধারণ')} • ${esc(x.t.unit)}</b></td><td>${money(x.rent)}</td><td>${x.prev!==''?Number(x.prev).toLocaleString('en-US'):'—'} → ${x.current!==''?Number(x.current).toLocaleString('en-US'):'—'} ${x.units!==''?`<small>(${Number(x.units).toLocaleString('en-US')} ব্যবহৃত)</small>`:''}</td><td>${money(x.collected)}</td><td style="color:${x.due>0?'#dc2626':'#15803d'};font-weight:900">${money(x.due)}</td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">ভাড়াটিয়া যোগ করলে হিসাব এখানে দেখা যাবে।'}
+function printTotalCollection(){const data=collectionRows();const payload={type:'total-collection-report',generatedAt:new Date().toISOString(),tenants:data.map(x=>({name:x.t.name,group:x.t.group||'সাধারণ',unit:x.t.unit,rent:x.rent,previousUnit:x.prev,currentUnit:x.current,usedUnits:x.units,collected:x.collected,due:x.due}))};$('printArea').innerHTML=`<div class="printpage collection-print"><div class="printhead"><div><h1>${esc(db.settings.title||'স্মার্ট বাড়িওয়ালা')}</h1><div>মোট আদায় ও ভাড়াটিয়াভিত্তিক হিসাব</div><div style="font-size:9px">প্রিন্ট: ${new Date().toLocaleString('en-GB',{hour12:true})}</div></div><div style="font-size:12px;font-weight:bold">মোট ভাড়াটিয়া: ${data.length}</div></div><table class="printtable collection-print-table" style="--rowfont:${Math.max(3.5,7-Math.max(0,data.length-20)*0.07)}px;--rowpad:${Math.max(1,3-Math.max(0,data.length-20)*0.04)}px"><thead><tr><th>ভাড়াটিয়া</th><th>বাড়ির গ্রুপ • ইউনিট</th><th>ভাড়া</th><th>মিটার পূর্বে→বর্তমানে (ব্যবহৃত)</th><th>আদায়</th><th>বকেয়া</th></tr></thead><tbody>${data.map(x=>`<tr><td>${esc(x.t.name)}</td><td>${esc(x.t.group||'সাধারণ')} • ${esc(x.t.unit)}</td><td>${money(x.rent)}</td><td>${x.prev!==''?x.prev:'—'} → ${x.current!==''?x.current:'—'} (${x.units!==''?x.units:'—'})</td><td>${money(x.collected)}</td><td>${money(x.due)}</td></tr>`).join('')}</tbody></table>${printAuthorityFooter(payload,68)}</div>`;printWhenReady('printing-bill')}
+function renderBills(){const arr=sortBills([...db.bills]);const q=($('billSearch')?.value||'').toLowerCase();$('billTable').innerHTML=tableBills(arr.filter(b=>[b.month,b.tenantName,b.unit].some(x=>String(x).toLowerCase().includes(q))));$('recentBills').innerHTML=tableBills(arr.slice(0,5));renderTotalCollection()}
+function viewBill(id){const b=db.bills.find(x=>x.id===id);if(!b)return;const s=db.settings;$('viewTitle').textContent=`${b.month} • ${b.unit} • বিল`;const stamp=new Date(b.createdAt).toLocaleString('en-GB',{hour12:true});$('viewContent').innerHTML=`<div class="printhead"><div><h2>${esc(s.title)}</h2><div>মাসিক ভাড়া রশিদ</div></div><div class="location-highlight"><div class="group-highlight">${esc(b.group||db.tenants.find(t=>t.id===b.tenantId)?.group||'সাধারণ')}</div><div class="room-highlight">${esc(b.unit)}</div></div></div><div class="facts" style="margin:15px 0">${[['ভাড়াটিয়া',b.tenantName],['মোবাইল',b.phone],['বিলের মাস',b.month],['তৈরির তারিখ ও সময়',stamp]].map(x=>`<div class="fact"><small>${x[0]}</small><b>${esc(x[1])}</b></div>`).join('')}</div><div class="tablewrap"><table style="min-width:0"><tbody>${[['বাসা ভাড়া',money(b.rent)],['বিদ্যুৎ ('+b.units+' ইউনিট × '+money(b.unitPrice)+')',money(b.electric)],['পানি বিল',money(b.water)],['অন্যান্য: '+(b.otherNote||'চার্জ'),money(b.other)],['পূর্বের বকেয়া: '+(b.dueNote||''),money(b.due)],['এই বিলের বিপরীতে জমা',money(b.paid||0)],['অবশিষ্ট বকেয়া',money(b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0))) ]].map(x=>`<tr><td>${esc(x[0])}</td><td style="text-align:right">${x[1]}</td></tr>`).join('')}<tr><th>সর্বমোট বিল</th><th style="text-align:right;font-size:18px">${money(b.total)}</th></tr><tr><th>জমা</th><th style="text-align:right;color:#15803d">${money(b.paid||0)}</th></tr><tr><th>অবশিষ্ট বকেয়া</th><th style="text-align:right;color:${(+((b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0))))>0)?'#dc2626':'#16a34a'}">${money(b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0)))}</th></tr></tbody></table></div><div class="actions"><button class="primary" onclick="printBill('${id}')">🖨 প্রিন্ট / PDF</button><button class="success" onclick="sendBill('${id}')">WhatsApp Send</button><button class="secondary" onclick="openBill('${id}');closeModal('viewModal')">✏ এডিট</button><button class="danger" onclick="deleteBill('${id}')">🗑 ডিলিট</button></div>`;openModal('viewModal')}
+function printBill(id){const b=db.bills.find(x=>x.id===id),s=db.settings;if(!b)return;const payload={type:'rent-bill',billId:b.id,tenant:b.tenantName,group:b.group||db.tenants.find(t=>t.id===b.tenantId)?.group||'সাধারণ',unit:b.unit,month:b.month,total:b.total,rent:b.rent,meterNo:b.meterNo||db.tenants.find(t=>t.id===b.tenantId)?.meterNo,previousUnit:b.prevUnit,currentUnit:b.currentUnit,usedUnits:b.units,paid:b.paid||0,due:b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0)),createdAt:b.createdAt};const packed=JSON.stringify(payload);const qrData=/^https?:$/.test(location.protocol)?location.href.split('#')[0]+'#verify='+encodeURIComponent(packed):packed;const qrUrl='https://api.qrserver.com/v1/create-qr-code/?size=160x160&data='+encodeURIComponent(qrData);$('printArea').innerHTML=`<div class="printpage"><div class="printhead"><div><h1>${esc(s.title)}</h1><div>মাসিক ভাড়া রশিদ / RENT RECEIPT</div><div style="font-size:11px">রশিদ নং: ${esc(b.id)}</div></div><div class="location-highlight"><div class="group-highlight">${esc(payload.group)}</div><div class="room-highlight">${esc(b.unit)}</div></div></div><div class="printgrid"><div class="printbox"><b>ভাড়াটিয়ার নাম</b><span>${esc(b.tenantName)}</span></div><div class="printbox"><b>মোবাইল নম্বর</b><span>${esc(b.phone)}</span></div><div class="printbox"><b>বিলের মাস</b><span>${esc(b.month)}</span></div><div class="printbox"><b>বিল তৈরির তারিখ ও সময়</b><span>${new Date(b.createdAt).toLocaleString('en-GB',{hour12:true})}</span></div></div><table class="printtable"><thead><tr><th>বিবরণ</th><th>পরিমাণ</th><th>টাকা</th></tr></thead><tbody><tr><td>বাসা ভাড়া</td><td>১ মাস</td><td>${money(b.rent)}</td></tr><tr><td>বিদ্যুৎ বিল</td><td>${b.units} ইউনিট × ${money(b.unitPrice)}</td><td>${money(b.electric)}</td></tr><tr><td>পানি বিল</td><td>—</td><td>${money(b.water)}</td></tr><tr><td>অন্যান্য চার্জ — ${esc(b.otherNote||'—')}</td><td>—</td><td>${money(b.other)}</td></tr><tr><td>পূর্বের বকেয়া — ${esc(b.dueNote||'—')}</td><td>—</td><td>${money(b.due)}</td></tr><tr><td>জমা</td><td>—</td><td>− ${money(b.paid||0)}</td></tr></tbody></table><div class="printtotal">সর্বমোট বিল: ${money(b.total)}<br><span style="font-size:12px;color:${(+b.remainingDue||0)>0?'#dc2626':'#15803d'}">অবশিষ্ট বকেয়া: ${money(b.remainingDue??Math.max(0,(+b.total||0)-(+b.paid||0)))}</span></div><div style="font-size:11px">মিটার রিডিং: পূর্বের ${b.prevUnit} • বর্তমান ${b.currentUnit} • ব্যবহৃত ${b.units} ইউনিট</div>${printAuthorityFooter(payload,88)}</div>`;printWhenReady('printing-bill')}
+function sendBill(id){const b=db.bills.find(x=>x.id===id);if(!b)return;const msg=`🏠 *${db.settings.title} — মাসিক ভাড়া বিল*\\n━━━━━━━━━━━━━━\\n👤 ভাড়াটিয়া: ${b.tenantName}\\n🚪 ইউনিট/রুম: ${b.unit}\\n📅 বিলের মাস: ${b.month}\\n💰 বাসা ভাড়া: ${money(b.rent)}\\n⚡ বিদ্যুৎ (${b.units} ইউনিট): ${money(b.electric)}\\n🚰 পানি বিল: ${money(b.water)}\\n➕ অন্যান্য (${b.otherNote||'চার্জ'}): ${money(b.other)}\\n⏳ বকেয়া: ${money(b.due)}\\n━━━━━━━━━━━━━━\\n✅ *সর্বমোট: ${money(b.total)}*\\n🕒 তৈরি: ${new Date(b.createdAt).toLocaleString('en-GB',{hour12:true})}\\n\\nধন্যবাদ। কোনো তথ্যের অসঙ্গতি থাকলে অনুগ্রহ করে যোগাযোগ করুন।\\n${db.settings.managerName||''} ${db.settings.managerPhone||''}`;window.open('https://wa.me/'+b.phone.replace(/\D/g,'')+'?text='+encodeURIComponent(msg),'_blank')}
+function deleteBill(id){if(!canAdmin())return;if(confirm('এই বিলটি স্থায়ীভাবে মুছে ফেলবেন?')){db.bills=db.bills.filter(x=>x.id!==id);closeModal('viewModal');saveDB();toast('বিল মুছে ফেলা হয়েছে')}}
+function renderDues(){const arr=[...db.tenants].sort((a,b)=>(b.due||0)-(a.due||0));$('dueTable').innerHTML=arr.length?`<div class="tablewrap"><table><thead><tr><th>ভাড়াটিয়া</th><th>ইউনিট</th><th>মাসিক ভাড়া</th><th>বকেয়া</th><th>বকেয়ার বিষয়</th><th>অ্যাকশন</th></tr></thead><tbody>${arr.map(t=>`<tr onclick="viewTenant('${t.id}')"><td>${esc(t.name)}</td><td><div class="location-highlight"><div class="group-highlight" style="font-size:11px;padding:3px 6px">${esc(t.group||'সাধারণ')}</div><div class="room-highlight" style="font-size:16px;padding:3px 7px">${esc(t.unit)}</div></div></td><td>${money(t.rent)}</td><td style="color:#dc2626;font-weight:bold">${money(t.due)}</td><td>${esc(t.dueNote||'—')}</td><td><button class="secondary" onclick="event.stopPropagation();recordPayment('${t.id}')">জমা নিন</button> <button class="success" onclick="event.stopPropagation();waTenant('${t.id}')">Send</button> <button class="ghost" onclick="event.stopPropagation();openTenant('${t.id}')">এডিট</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="panel empty">ভাড়াটিয়া যোগ করলে বকেয়ার হিসাব এখানে দেখা যাবে।'}
+function recordPayment(id){const t=db.tenants.find(x=>x.id===id);if(!t)return;if((+t.due||0)<=0){toast('এই ভাড়াটিয়ার বর্তমানে কোনো বকেয়া নেই');return}const v=prompt(`${t.name} (${t.unit})\nবর্তমান বকেয়া: ${money(t.due)}\nকত টাকা জমা হয়েছে?`);if(v===null)return;const n=Number(v);if(!Number.isFinite(n)||n<=0){toast('শূন্যের বেশি সঠিক পরিমাণ লিখুন');return}if(n>(+t.due||0)){toast('জমার পরিমাণ বর্তমান বকেয়ার চেয়ে বেশি');return}t.due=Math.max(0,(+t.due||0)-n);t.payments=t.payments||[];t.payments.push({date:new Date().toISOString(),amount:n,remaining:t.due});const lastBill=sortBills(db.bills.filter(b=>b.tenantId===t.id))[0];if(lastBill){lastBill.paid=(+lastBill.paid||0)+n;lastBill.remainingDue=t.due;}saveDB();if($('page-collected')?.classList.contains('active'))showCollectedTenant(id);toast('জমা রেকর্ড হয়েছে; অবশিষ্ট '+money(t.due))}
+function renderDashboard(){const m=monthFmt(currentMonth()),due=db.tenants.reduce((s,t)=>s+(+t.due||0),0),rent=db.tenants.reduce((s,t)=>s+(+t.rent||0),0),adv=db.tenants.reduce((s,t)=>s+(+t.advance||0),0);$('statTenants').textContent=db.tenants.length.toLocaleString('en-US');$('statRent').textContent=money(rent);$('statDue').textContent=money(due);$('statBills').textContent=db.bills.filter(b=>b.month===m).length.toLocaleString('en-US');$('summaryPayable').textContent=money(rent+due);$('summaryAdvance').textContent=money(adv);const last=sortBills([...db.bills])[0];$('summaryLast').textContent=last?`${last.tenantName} • ${last.month} • ${money(last.total)}`:'এখনও কোনো বিল নেই';$('todayText').textContent='আজ: '+dateFmt(new Date().toISOString().slice(0,10))+' • চলতি মাস: '+m}
+function openUnitForm(id=''){if(!canAdmin()){toast('ইউনিট পরিবর্তনের জন্য Admin প্রয়োজন');return}const u=(db.units||[]).find(x=>x.id===id);$('unitForm').reset();$('unitId').value=u?.id||'';$('unitModalTitle').textContent=u?'ইউনিট এডিট':'নতুন বাড়ির ইউনিট';$('uName').value=u?.name||'';$('uGroup').value=u?.group||'';$('uNote').value=u?.note||'';$('unitNameOptions').innerHTML=[...new Set((db.units||[]).map(x=>x.name).filter(Boolean))].map(n=>`<option value="${esc(n)}"></option>`).join('');fillGroupOptions(u?.group||'');openModal('unitModal')}
+$('unitForm').addEventListener('submit',e=>{e.preventDefault();const id=$('unitId').value||'U'+Date.now(),name=$('uName').value.trim(),group=$('uGroup').value.trim()||'সাধারণ',note=$('uNote').value.trim();if(!name)return;if((db.units||[]).some(u=>String(u.name||'').trim().toLocaleLowerCase()===name.toLocaleLowerCase()&&String(u.group||'সাধারণ').trim().toLocaleLowerCase()===group.toLocaleLowerCase()&&u.id!==id)){toast('এই বাড়ির ক্যাটাগরি/গ্রুপে একই ইউনিট/রুম আগে থেকেই আছে');return}const old=(db.units||[]).find(u=>u.id===id);if(old){const prior=old.name,priorGroup=String(old.group||'সাধারণ'),affectedTenantIds=db.tenants.filter(t=>String(t.unit||'').toLocaleLowerCase()===String(prior).toLocaleLowerCase()&&String(t.group||'সাধারণ')===priorGroup).map(t=>t.id);old.name=name;old.group=group;old.note=note;db.tenants.forEach(t=>{if(affectedTenantIds.includes(t.id)){t.unit=name;t.group=group}});db.bills.forEach(b=>{if(affectedTenantIds.includes(b.tenantId))b.unit=name})}else db.units.push({id,name,group,note});closeModal('unitModal');saveDB();toast('ইউনিটের তথ্য সেভ হয়েছে')});
+function deleteUnit(id){if(!canAdmin())return;const u=db.units.find(x=>x.id===id);if(!u)return;if(db.tenants.some(t=>t.unit===u.name&&String(t.group||'সাধারণ')===String(u.group||'সাধারণ'))){toast('এই ইউনিটে ভাড়াটিয়া আছে; আগে ভাড়াটিয়া অন্য ইউনিটে সরান');return}if(confirm(`${u.name} ইউনিটটি মুছে ফেলবেন?`)){db.units=db.units.filter(x=>x.id!==id);saveDB();toast('ইউনিট মুছে ফেলা হয়েছে')}}
 function monthsStayed(t){if(!t.moveDate)return 'তারিখ দেওয়া নেই';const a=new Date(t.moveDate+'T00:00:00'),b=new Date();let m=(b.getFullYear()-a.getFullYear())*12+b.getMonth()-a.getMonth();if(b.getDate()<a.getDate())m--;return Math.max(0,m)+' মাস'}
-
-function renderUnits(){
-    const q=($('unitSearch')?.value||'').toLowerCase(), all=db.units||[];
-    const units=[...all].filter(u=>[u.name,u.group,u.note].some(v=>String(v||'').toLowerCase().includes(q))).sort((a,b)=>String(a.group).localeCompare(String(b.group))||a.name.localeCompare(b.name,undefined,{numeric:true}));
-    $('unitCards').innerHTML=units.length?units.map(u=>{const t=db.tenants.find(x=>String(x.unit||'').toLowerCase()===String(u.name||'').toLowerCase()&&String(x.group||'সাধারণ')===String(u.group||'সাধারণ')),occupied=!!t;return `<article class="unit-card" onclick="viewUnit('${u.id}')"><div style="display:flex;justify-content:space-between;gap:8px;align-items:start"><div><div class="location-highlight"><div class="group-highlight">${esc(u.group||'সাধারণ')}</div><div class="room-highlight">${esc(u.name)}</div></div></div><div class="unit-state" style="color:${occupied?'#dc2626':'#16a34a'}"><span class="signal ${occupied?'red':'green'}"></span>${occupied?'ভাড়ায় আছে':'খালি'}</div></div>${occupied?`<div style="display:flex;gap:10px;align-items:center;margin-top:12px"><img class="avatar" style="width:54px;height:54px" src="${t.photo||''}" onerror="this.style.visibility='hidden'"><div><b>${esc(t.name)}</b><div class="muted" style="font-size:12px">বকেয়া: <strong style="color:${(+t.due||0)>0?'#dc2626':'#16a34a'}">${money(t.due)}</strong></div><div class="muted" style="font-size:12px">বসবাস: ${monthsStayed(t)}</div></div></div>`:`<p class="muted" style="margin:12px 0 0">এই ইউনিটে বর্তমানে কোনো ভাড়াটিয়া নেই।</p>`}<div class="actions" onclick="event.stopPropagation()"><button class="secondary" onclick="viewUnit('${u.id}')">বিস্তারিত</button><button class="ghost" onclick="openUnitForm('${u.id}')">এডিট</button><button class="danger" onclick="deleteUnit('${u.id}')">ডিলিট</button></div></article>`}).join(''):'<div class="panel empty" style="grid-column:1/-1">ইউনিট তৈরি হয়নি। “নতুন ইউনিট / রুম” বাটনে ক্লিক করুন।</div>'
-}
-
-function viewUnit(id){
-    const u=(db.units||[]).find(x=>x.id===id);if(!u)return;
-    const t=db.tenants.find(x=>String(x.unit||'').toLowerCase()===String(u.name||'').toLowerCase()&&String(x.group||'সাধারণ')===String(u.group||'সাধারণ'));
-    $('viewTitle').textContent='বাড়ির ইউনিট • '+u.name;
-    $('viewContent').innerHTML=`<div class="tenant-head" style="border-radius:15px"><div style="flex:1"><div class="location-highlight"><div class="group-highlight">${esc(u.group||'সাধারণ')}</div><div class="room-highlight">${esc(u.name)}</div></div><p>${esc(u.note||'')}</p><b style="color:${t?'#dc2626':'#16a34a'}"><span class="signal ${t?'red':'green'}"></span>${t?'ভাড়ায় আছে':'খালি'}</b></div></div>${t?`<div class="tenant-head" style="margin-top:12px;border-radius:15px"><img class="avatar" src="${t.photo||''}" onerror="this.style.visibility='hidden'"><div><h3>${esc(t.name)}</h3><div>${esc(t.phone)}</div><div>বসবাসের সময়: <b>${monthsStayed(t)}</b></div><div>মাসিক ভাড়া: <b>${money(t.rent)}</b></div><div>বকেয়া: <b style="color:${(+t.due||0)>0?'#dc2626':'#16a34a'}">${money(t.due)}</b></div></div></div><div class="detail-list" style="margin-top:12px">${[['অগ্রিম জমা',money(t.advance)],['মিটার নম্বর',t.meterNo||'—'],['মিটার ইউনিট',t.meterUnit],['মিটার ব্যালেন্স',money(t.meterBalance)],['উঠার তারিখ',dateFmt(t.moveDate)],['বকেয়ার বিষয়',t.dueNote||'—']].map(x=>`<div class="fact"><small>${x[0]}</small><b>${esc(x[1])}</b></div>`).join('')}</div><div class="actions"><button class="primary" onclick="printTenant('${t.id}')">ছবিসহ A4 প্রিন্ট</button><button class="secondary" onclick="viewTenant('${t.id}')">সম্পূর্ণ প্রোফাইল</button><button class="secondary" onclick="viewTenantHistory('${t.id}')">📚 হিস্টোরি</button><button class="success" onclick="recordPayment('${t.id}')">বকেয়া জমা</button></div>`:'<div class="panel empty">ইউনিটটি বর্তমানে খালি। ভাড়াটিয়া যোগ করার সময় এই ইউনিট নির্বাচন করুন।</div>'}<div class="actions"><button class="ghost" onclick="openUnitForm('${u.id}')">ইউনিট এডিট</button></div>`;
-    openModal('viewModal')
-}
-
-function showCollectedTenant(id){
-    const t=db.tenants.find(x=>x.id===id);if(!t)return;
-    const arr=sortBills(db.bills.filter(b=>b.tenantId===id||b.unit===t.unit));
-    $('collectedDetail').innerHTML=`<div class="panel"><div class="tenant-head" style="border-radius:14px"><img class="avatar" src="${t.photo||''}" onerror="this.style.visibility='hidden'"><div style="flex:1"><h3>${esc(t.name)}</h3><div class="location-highlight"><div class="group-highlight">${esc(t.group||'সাধারণ')}</div><div class="room-highlight">${esc(t.unit)}</div></div><div>${esc(t.phone)}</div><div style="color:${(+t.due||0)>0?'#dc2626':'#16a34a'};font-weight:900"><span class="signal ${(+t.due||0)>0?'red':'green'}"></span>অবশিষ্ট বকেয়া: ${money(t.due)}</div></div></div><div class="actions"><button class="primary" onclick="recordPayment('${t.id}')">💰 বকেয়া জমা নিন</button><button class="secondary" onclick="viewTenant('${t.id}')">ভাড়াটিয়ার প্রোফাইল</button></div><h3 style="margin-top:18px">সকল বিল</h3>${tableBills(arr)}</div>`
-}
-
-function renderCollected(){
-    const q=($('collectedSearch')?.value||'').toLowerCase();
-    const billedIds=[...new Set(db.bills.map(b=>b.tenantId).filter(Boolean))];
-    const ts=db.tenants.filter(t=>billedIds.includes(t.id)&&[t.name,t.unit,t.phone].some(v=>String(v||'').toLowerCase().includes(q)));
-    $('collectedCards').innerHTML=ts.length?ts.map(t=>`<article class="pay-card" onclick="showCollectedTenant('${t.id}')"><div style="display:flex;gap:10px;align-items:center"><img class="avatar" style="width:58px;height:58px" src="${t.photo||''}" onerror="this.style.visibility='hidden'"><div style="flex:1"><div style="font-weight:900;font-size:16px">${esc(t.name)}</div><div class="location-highlight"><div class="group-highlight" style="font-size:12px;padding:4px 8px">${esc(t.group||'সাধারণ')}</div><div class="room-highlight" style="font-size:18px;padding:4px 9px">${esc(t.unit)}</div></div><div style="color:${(+t.due||0)>0?'#dc2626':'#16a34a'};font-weight:900"><span class="signal ${(+t.due||0)>0?'red':'green'}"></span>${(+t.due||0)>0?'বকেয়া '+money(t.due):'বকেয়া পরিশোধ / নেই'}</div></div></div><div style="margin-top:10px">মোট বিল: <b>${db.bills.filter(b=>b.tenantId===t.id).length}</b> টি</div></article>`).join(''):'<div class="panel empty" style="grid-column:1/-1">এখনও কোনো বিল তৈরি করা হয়নি।</div>';
-}
-
-function renderSettings(){
-    if(!canAdmin())return;
-    const s=db.settings;
-    $('appTitle').textContent='স্মার্ট বাড়িওয়ালা';
-    $('setTitle').value='স্মার্ট বাড়িওয়ালা';
-    $('managerName').value=s.managerName||'';
-    $('managerRole').value=s.managerRole||'';
-    $('managerPhone').value=s.managerPhone||'';
-    $('developerSite').value=s.developerSite||'';
-    $('usersList').innerHTML=db.users.map(u=>`<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line)"><span><b>${esc(u.id)}</b> <small class="muted">${u.role}</small></span>${u.role!=='admin'?`<button class="danger" onclick="deleteUser('${u.id}')">ডিলিট</button>`:'<span class="badge">Admin</span>'}</div>`).join('')
-}
-
-$('settingsForm').addEventListener('submit',e=>{
-    e.preventDefault();
-    db.settings.title='স্মার্ট বাড়িওয়ালা';
-    db.settings.managerName=$('managerName').value;
-    db.settings.managerRole=$('managerRole').value;
-    db.settings.managerPhone=$('managerPhone').value;
-    db.settings.developerSite=$('developerSite').value;
-    db.settings.managerSign=signData;
-    saveDB();
-    toast('সেটিংস সেভ হয়েছে')
-});
-
+function renderUnits(){const q=($('unitSearch')?.value||'').toLowerCase(),all=db.units||[];const units=[...all].filter(u=>[u.name,u.group,u.note].some(v=>String(v||'').toLowerCase().includes(q))).sort((a,b)=>String(a.group).localeCompare(String(b.group))||a.name.localeCompare(b.name,undefined,{numeric:true}));$('unitCards').innerHTML=units.length?units.map(u=>{const t=db.tenants.find(x=>String(x.unit||'').toLowerCase()===String(u.name||'').toLowerCase()&&String(x.group||'সাধারণ')===String(u.group||'সাধারণ')),occupied=!!t;return `<article class="unit-card" onclick="viewUnit('${u.id}')"><div style="display:flex;justify-content:space-between;gap:8px;align-items:start"><div><div class="location-highlight"><div class="group-highlight">${esc(u.group||'সাধারণ')}</div><div class="room-highlight">${esc(u.name)}</div></div></div><div class="unit-state" style="color:${occupied?'#dc2626':'#16a34a'}"><span class="signal ${occupied?'red':'green'}"></span>${occupied?'ভাড়ায় আছে':'খালি'}</div></div>${occupied?`<div style="display:flex;gap:10px;align-items:center;margin-top:12px"><img class="avatar" style="width:54px;height:54px" src="${t.photo||''}" onerror="this.style.visibility='hidden'"><div><b>${esc(t.name)}</b><div class="muted" style="font-size:12px">বকেয়া: <strong style="color:${(+t.due||0)>0?'#dc2626':'#16a34a'}">${money(t.due)}</strong></div><div class="muted" style="font-size:12px">বসবাস: ${monthsStayed(t)}</div></div></div>`:`<p class="muted" style="margin:12px 0 0">এই ইউনিটে বর্তমানে কোনো ভাড়াটিয়া নেই।</p>`}<div class="actions" onclick="event.stopPropagation()"><button class="secondary" onclick="viewUnit('${u.id}')">বিস্তারিত</button><button class="ghost" onclick="openUnitForm('${u.id}')">এডিট</button><button class="danger" onclick="deleteUnit('${u.id}')">ডিলিট</button></div></article>`}).join(''):'<div class="panel empty" style="grid-column:1/-1">ইউনিট তৈরি হয়নি। “নতুন ইউনিট / রুম” বাটনে ক্লিক করুন।</div>'}
+function viewUnit(id){const u=(db.units||[]).find(x=>x.id===id);if(!u)return;const t=db.tenants.find(x=>String(x.unit||'').toLowerCase()===String(u.name||'').toLowerCase()&&String(x.group||'সাধারণ')===String(u.group||'সাধারণ'));$('viewTitle').textContent='বাড়ির ইউনিট • '+u.name;$('viewContent').innerHTML=`<div class="tenant-head" style="border-radius:15px"><div style="flex:1"><div class="location-highlight"><div class="group-highlight">${esc(u.group||'সাধারণ')}</div><div class="room-highlight">${esc(u.name)}</div></div><p>${esc(u.note||'')}</p><b style="color:${t?'#dc2626':'#16a34a'}"><span class="signal ${t?'red':'green'}"></span>${t?'ভাড়ায় আছে':'খালি'}</b></div></div>${t?`<div class="tenant-head" style="margin-top:12px;border-radius:15px"><img class="avatar" src="${t.photo||''}" onerror="this.style.visibility='hidden'"><div><h3>${esc(t.name)}</h3><div>${esc(t.phone)}</div><div>বসবাসের সময়: <b>${monthsStayed(t)}</b></div><div>মাসিক ভাড়া: <b>${money(t.rent)}</b></div><div>বকেয়া: <b style="color:${(+t.due||0)>0?'#dc2626':'#16a34a'}">${money(t.due)}</b></div></div></div><div class="detail-list" style="margin-top:12px">${[['অগ্রিম জমা',money(t.advance)],['মিটার নম্বর',t.meterNo||'—'],['মিটার ইউনিট',t.meterUnit],['মিটার ব্যালেন্স',money(t.meterBalance)],['উঠার তারিখ',dateFmt(t.moveDate)],['বকেয়ার বিষয়',t.dueNote||'—']].map(x=>`<div class="fact"><small>${x[0]}</small><b>${esc(x[1])}</b></div>`).join('')}</div><div class="actions"><button class="primary" onclick="printTenant('${t.id}')">ছবিসহ A4 প্রিন্ট</button><button class="secondary" onclick="viewTenant('${t.id}')">সম্পূর্ণ প্রোফাইল</button><button class="secondary" onclick="viewTenantHistory('${t.id}')">📚 হিস্টোরি</button><button class="success" onclick="recordPayment('${t.id}')">বকেয়া জমা</button></div>`:'<div class="panel empty">ইউনিটটি বর্তমানে খালি। ভাড়াটিয়া যোগ করার সময় এই ইউনিট নির্বাচন করুন।</div>'}<div class="actions"><button class="ghost" onclick="openUnitForm('${u.id}')">ইউনিট এডিট</button></div>`;openModal('viewModal')}
+function showCollectedTenant(id){const t=db.tenants.find(x=>x.id===id);if(!t)return;const arr=sortBills(db.bills.filter(b=>b.tenantId===id||b.unit===t.unit));$('collectedDetail').innerHTML=`<div class="panel"><div class="tenant-head" style="border-radius:14px"><img class="avatar" src="${t.photo||''}" onerror="this.style.visibility='hidden'"><div style="flex:1"><h3>${esc(t.name)}</h3><div class="location-highlight"><div class="group-highlight">${esc(t.group||'সাধারণ')}</div><div class="room-highlight">${esc(t.unit)}</div></div><div>${esc(t.phone)}</div><div style="color:${(+t.due||0)>0?'#dc2626':'#16a34a'};font-weight:900"><span class="signal ${(+t.due||0)>0?'red':'green'}"></span>অবশিষ্ট বকেয়া: ${money(t.due)}</div></div></div><div class="actions"><button class="primary" onclick="recordPayment('${t.id}')">💰 বকেয়া জমা নিন</button><button class="secondary" onclick="viewTenant('${t.id}')">ভাড়াটিয়ার প্রোফাইল</button></div><h3 style="margin-top:18px">সকল বিল</h3>${tableBills(arr)}</div>`}
+function renderCollected(){const q=($('collectedSearch')?.value||'').toLowerCase();const billedIds=[...new Set(db.bills.map(b=>b.tenantId).filter(Boolean))];const ts=db.tenants.filter(t=>billedIds.includes(t.id)&&[t.name,t.unit,t.phone].some(v=>String(v||'').toLowerCase().includes(q)));$('collectedCards').innerHTML=ts.length?ts.map(t=>`<article class="pay-card" onclick="showCollectedTenant('${t.id}')"><div style="display:flex;gap:10px;align-items:center"><img class="avatar" style="width:58px;height:58px" src="${t.photo||''}" onerror="this.style.visibility='hidden'"><div style="flex:1"><div style="font-weight:900;font-size:16px">${esc(t.name)}</div><div class="location-highlight"><div class="group-highlight" style="font-size:12px;padding:4px 8px">${esc(t.group||'সাধারণ')}</div><div class="room-highlight" style="font-size:18px;padding:4px 9px">${esc(t.unit)}</div></div><div style="color:${(+t.due||0)>0?'#dc2626':'#16a34a'};font-weight:900"><span class="signal ${(+t.due||0)>0?'red':'green'}"></span>${(+t.due||0)>0?'বকেয়া '+money(t.due):'বকেয়া পরিশোধ / নেই'}</div></div></div><div style="margin-top:10px">মোট বিল: <b>${db.bills.filter(b=>b.tenantId===t.id).length}</b> টি</div></article>`).join(''):'<div class="panel empty" style="grid-column:1/-1">এখনও কোনো বিল তৈরি করা হয়নি।</div>';}
+function renderSettings(){if(!canAdmin())return;const s=db.settings;$('appTitle').textContent='স্মার্ট বাড়িওয়ালা';$('setTitle').value='স্মার্ট বাড়িওয়ালা';$('managerName').value=s.managerName||'';$('managerRole').value=s.managerRole||'';$('managerPhone').value=s.managerPhone||'';$('developerSite').value=s.developerSite||'';$('usersList').innerHTML=db.users.map(u=>`<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line)"><span><b>${esc(u.id)}</b> <small class="muted">${u.role}</small></span>${u.role!=='admin'?`<button class="danger" onclick="deleteUser('${u.id}')">ডিলিট</button>`:'<span class="badge">Admin</span>'}</div>`).join('')}
+$('settingsForm').addEventListener('submit',e=>{e.preventDefault();db.settings.title='স্মার্ট বাড়িওয়ালা';db.settings.managerName=$('managerName').value;db.settings.managerRole=$('managerRole').value;db.settings.managerPhone=$('managerPhone').value;db.settings.developerSite=$('developerSite').value;db.settings.managerSign=signData;saveDB();toast('সেটিংস সেভ হয়েছে')});
 $('managerSign').addEventListener('change',e=>readImage(e.target.files[0],v=>signData=v));
-
-$('passwordForm').addEventListener('submit',e=>{
-    e.preventDefault();
-    const old=db.users.find(x=>x.role==='admin');
-    const id=$('newAdminId').value.trim();
-    if(!id)return;
-    if(db.users.some(x=>x.id.toLowerCase()===id.toLowerCase()&&x!==old)){toast('এই ইউজার আইডি ব্যবহৃত হচ্ছে');return}
-    old.id=id;
-    if($('newAdminPass').value)old.pass=$('newAdminPass').value;
-    currentUser=old;
-    saveDB();
-    toast('Admin লগইন তথ্য আপডেট হয়েছে')
-});
-
-$('userForm').addEventListener('submit',e=>{
-    e.preventDefault();
-    const id=$('newUserId').value.trim(), pass=$('newUserPass').value;
-    if(db.users.some(x=>x.id.toLowerCase()===id.toLowerCase()))return toast('ইউজার আইডি আগে থেকেই আছে');
-    db.users.push({id,pass,role:'user'});
-    $('userForm').reset();
-    saveDB();
-    toast('নতুন ইউজার তৈরি হয়েছে')
-});
-
-function deleteUser(id){
-    if(confirm('এই ইউজার মুছবেন?')){
-        db.users=db.users.filter(x=>x.id!==id);
-        saveDB()
-    }
-}
-
-function backupData(){
-    const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}), a=document.createElement('a');
-    a.href=URL.createObjectURL(blob);
-    a.download='rentflow-backup-'+new Date().toISOString().slice(0,10)+'.json';
-    a.click();
-    URL.revokeObjectURL(a.href)
-}
-
-$('restoreFile').addEventListener('change',e=>{
-    const f=e.target.files[0];if(!f)return;
-    const r=new FileReader();
-    r.onload=()=>{
-        try{
-            const x=JSON.parse(r.result);
-            if(!x.tenants||!x.bills||!x.users)throw Error();
-            if(confirm('বর্তমান ডেটা রিপ্লেস করে ব্যাকআপ রিস্টোর করবেন?')){
-                db=x;
-                saveDB();
-                toast('ব্যাকআপ রিস্টোর হয়েছে')
-            }
-        }catch(err){toast('ভুল বা অসম্পূর্ণ ব্যাকআপ ফাইল')}
-        e.target.value=''
-    };
-    r.readAsText(f)
-});
-
-function clearAll(){
-    if(!canAdmin())return;
-    if(prompt('সব ডেটা মুছতে DELETE লিখুন')==='DELETE'){
-        const users=db.users, settings=db.settings;
-        db={tenants:[],bills:[],units:[],users,settings,theme:db.theme};
-        saveDB();
-        toast('ভাড়াটিয়া ও বিলের ডেটা মুছে ফেলা হয়েছে')
-    }
-}
-
-function toggleTheme(){
-    db.theme=!db.theme;
-    document.body.classList.toggle('dark',db.theme);
-    saveDB();
-    $('themeBtn').textContent=db.theme?'☀️':'🌙'
-}
-
+$('passwordForm').addEventListener('submit',e=>{e.preventDefault();const old=db.users.find(x=>x.role==='admin');const id=$('newAdminId').value.trim();if(!id)return;if(db.users.some(x=>x.id.toLowerCase()===id.toLowerCase()&&x!==old)){toast('এই ইউজার আইডি ব্যবহৃত হচ্ছে');return}old.id=id;if($('newAdminPass').value)old.pass=$('newAdminPass').value;currentUser=old;saveDB();toast('Admin লগইন তথ্য আপডেট হয়েছে')});
+$('userForm').addEventListener('submit',e=>{e.preventDefault();const id=$('newUserId').value.trim(),pass=$('newUserPass').value;if(db.users.some(x=>x.id.toLowerCase()===id.toLowerCase()))return toast('ইউজার আইডি আগে থেকেই আছে');db.users.push({id,pass,role:'user'});$('userForm').reset();saveDB();toast('নতুন ইউজার তৈরি হয়েছে')});
+function deleteUser(id){if(confirm('এই ইউজার মুছবেন?')){db.users=db.users.filter(x=>x.id!==id);saveDB()}}
+function backupData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='rentflow-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(a.href)}
+$('restoreFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x.tenants||!x.bills||!x.users)throw Error();if(confirm('বর্তমান ডেটা রিপ্লেস করে ব্যাকআপ রিস্টোর করবেন?')){db=x;saveDB();toast('ব্যাকআপ রিস্টোর হয়েছে')}}catch(err){toast('ভুল বা অসম্পূর্ণ ব্যাকআপ ফাইল')}e.target.value=''};r.readAsText(f)});
+function clearAll(){if(!canAdmin())return;if(prompt('সব ডেটা মুছতে DELETE লিখুন')==='DELETE'){const users=db.users,settings=db.settings;db={tenants:[],bills:[],users,settings,theme:db.theme};saveDB();toast('ভাড়াটিয়া ও বিলের ডেটা মুছে ফেলা হয়েছে')}}
+function toggleTheme(){db.theme=!db.theme;document.body.classList.toggle('dark',db.theme);saveDB();$('themeBtn').textContent=db.theme?'☀️':'🌙'}
 $('themeBtn').onclick=toggleTheme;
-$('tenantSearch').addEventListener('input',renderTenants);
-$('tenantSort').addEventListener('change',renderTenants);
-$('billSearch').addEventListener('input',renderBills);
-$('unitSearch').addEventListener('input',renderUnits);
-$('collectedSearch').addEventListener('input',renderCollected);
-
-function renderAll(){
-    renderDashboard();
-    renderTenants();
-    renderBills();
-    renderDues();
-    renderUnits();
-    renderCollected();
-    renderSettings();
-    document.body.classList.toggle('dark',!!db.theme);
-    $('themeBtn').textContent=db.theme?'☀️':'🌙'
-}
+$('tenantSearch').addEventListener('input',renderTenants);$('tenantSort').addEventListener('change',renderTenants);$('billSearch').addEventListener('input',renderBills);$('unitSearch').addEventListener('input',renderUnits);$('collectedSearch').addEventListener('input',renderCollected);
+function renderAll(){renderDashboard();renderTenants();renderBills();renderDues();renderUnits();renderCollected();renderSettings();document.body.classList.toggle('dark',!!db.theme);$('themeBtn').textContent=db.theme?'☀️':'🌙'}
 
 window.addEventListener('load',()=>{
-    if(location.hash.startsWith('#verify=')){
-        try{
-            const p=JSON.parse(decodeURIComponent(location.hash.slice(8)));
-            const d=p.document||p;
-            const rows=[['সফটওয়্যার',p.software||'স্মার্ট বাড়িওয়ালা'],['QR তৈরির সময়',p.generatedAt||'—'],['পরিচালকের নাম',p.director?.name||'—'],['পরিচালকের পদবী',p.director?.designation||'—'],['পরিচালকের মোবাইল',p.director?.mobile||'—'],...Object.entries(d||{}).filter(([k])=>!['bills','tenants'].includes(k))];
-            const details=rows.map(([k,v])=>`<tr><th style="text-align:left;padding:99px;background:#eef2ff;border:1px solid #ddd">${esc(k)}</th><td style="padding:9px;border:1px solid #ddd;overflow-wrap:anywhere">${esc(typeof v==='object'?JSON.stringify(v):String(v??'—'))}</td></tr>`).join('');
-            const list=d.bills||d.tenants||d.rows||[];
-            const listRows=list.map(x=>`<tr>${Object.values(x).map(v=>`<td style="padding:6px;border:1px solid #ddd;overflow-wrap:anywhere">${esc(typeof v==='object'?JSON.stringify(v):String(v??'—'))}</td>`).join('')}</tr>`).join('');
-            const listHead=list.length?`<table style="width:100%;border-collapse:collapse;margin-top:14px"><thead><tr>${Object.keys(list[0]).map(k=>`<th style="padding:6px;border:1px solid #ddd;background:#eef2ff">${esc(k)}</th>`).join('')}</tr></thead><tbody>${listRows}</tbody></table>`:'';
-            document.body.innerHTML=`<div style="max-width:900px;margin:25px auto;padding:20px;font-family:system-ui;color:#172554"><h1>স্মার্ট বাড়িওয়ালা — QR তথ্য যাচাই</h1><p>প্রিন্ট কপির QR কোডে থাকা তথ্য</p><table style="width:100%;border-collapse:collapse"><tbody>${details}</tbody></table>${listHead}<p style="font-size:12px;color:#64748b;margin-top:18px">গুরুত্বপূর্ণ: এই পেজ QR কোডে সংরক্ষিত তথ্য দেখায়।</p></div>`
-        }catch(err){
-            document.body.innerHTML='<div style="font-family:system-ui;padding:24px"><h2>QR তথ্য পড়া যায়নি</h2><p>QR কোডের লিংক বা তথ্য সঠিক নয়।</p></div>'
-        }
-        return;
+  loadDB();
+  if(location.hash.startsWith('#verify=')){
+    try{
+      const p=JSON.parse(decodeURIComponent(location.hash.slice(8)));
+      const d=p.document||p;
+      const rows=[['সফটওয়্যার',p.software||'স্মার্ট বাড়িওয়ালা'],['QR তৈরির সময়',p.generatedAt||'—'],['পরিচালকের নাম',p.director?.name||'—'],['পরিচালকের পদবী',p.director?.designation||'—'],['পরিচালকের মোবাইল',p.director?.mobile||'—'],...Object.entries(d||{}).filter(([k])=>!['bills','tenants'].includes(k))];
+      const details=rows.map(([k,v])=>`<tr><th style="text-align:left;padding:9px;background:#eef2ff;border:1px solid #ddd">${esc(k)}</th><td style="padding:9px;border:1px solid #ddd;overflow-wrap:anywhere">${esc(typeof v==='object'?JSON.stringify(v):String(v??'—'))}</td></tr>`).join('');
+      const list=d.bills||d.tenants||d.rows||[];
+      const listRows=list.map(x=>`<tr>${Object.values(x).map(v=>`<td style="padding:6px;border:1px solid #ddd;overflow-wrap:anywhere">${esc(typeof v==='object'?JSON.stringify(v):String(v??'—'))}</td>`).join('')}</tr>`).join('');
+      const listHead=list.length?`<table style="width:100%;border-collapse:collapse;margin-top:14px"><thead><tr>${Object.keys(list[0]).map(k=>`<th style="padding:6px;border:1px solid #ddd;background:#eef2ff">${esc(k)}</th>`).join('')}</tr></thead><tbody>${listRows}</tbody></table>`:'';
+      document.body.innerHTML=`<div style="max-width:900px;margin:25px auto;padding:20px;font-family:system-ui;color:#172554"><h1>স্মার্ট বাড়িওয়ালা — QR তথ্য যাচাই</h1><p>প্রিন্ট কপির QR কোডে থাকা তথ্য</p><table style="width:100%;border-collapse:collapse"><tbody>${details}</tbody></table>${listHead}<p style="font-size:12px;color:#64748b;margin-top:18px">গুরুত্বপূর্ণ: এই পেজ QR কোডে সংরক্ষিত তথ্য দেখায়। সার্ভার/ডিজিটাল স্বাক্ষরভিত্তিক জালিয়াতি-প্রতিরোধী যাচাইয়ের জন্য অনলাইন ডেটাবেস ও ব্যাকএন্ড সংযোগ প্রয়োজন।</p></div>`
+    }catch(err){
+      document.body.innerHTML='<div style="font-family:system-ui;padding:24px"><h2>QR তথ্য পড়া যায়নি</h2><p>QR কোডের লিংক বা তথ্য সঠিক নয়।</p></div>'
     }
-    authUI();
+    return;
+  }
 });
 </script>
-</body>
-</html>
+</body></html>
