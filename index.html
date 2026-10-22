@@ -93,7 +93,6 @@
   <section class="page" id="page-settings"><div class="heading"><div><h2>সেটিং</h2><p>সফটওয়্যার, পরিচালক ও ব্যবহারকারী সেটিং</p></div></div>
     <div class="grid2"><div class="panel"><h3>🏢 প্রতিষ্ঠান ও পরিচালক</h3><form id="settingsForm"><div class="field"><label>সফটওয়্যারের নাম</label><input id="setTitle" value="স্মার্ট বাড়িওয়ালা" readonly></div><div class="field"><label>পরিচালকের নাম</label><input id="managerName" placeholder="নাম"></div><div class="field"><label>পদবী</label><input id="managerRole" placeholder="যেমন: পরিচালক"></div><div class="field"><label>যোগাযোগ নম্বর</label><input id="managerPhone" placeholder="+8801XXXXXXXXX"></div><div class="field"><label>ডেভেলপার ওয়েবসাইট</label><input id="developerSite" value="https://smartcomputer-bd.github.io/com/"></div><div class="field"><label>স্বাক্ষর (ঐচ্ছিক ছবি)</label><input id="managerSign" type="file" accept="image/*"></div><button class="primary">সেটিং সেভ করুন</button></form></div>
     <div class="panel"><h3>🔐 লগইন ও ব্যবহারকারী</h3><form id="passwordForm"><div class="field"><label>বর্তমান ইউজার আইডি</label><input id="newAdminId" value="Admin" required></div><div class="field"><label>নতুন পাসওয়ার্ড (ফাঁকা রাখলে অপরিবর্তিত)</label><input id="newAdminPass" type="password"></div><button class="secondary">লগইন তথ্য আপডেট</button></form><hr style="border:0;border-top:1px solid var(--line);margin:20px 0"><form id="userForm"><div class="field"><label>নতুন ইউজার আইডি</label><input id="newUserId" required></div><div class="field"><label>পাসওয়ার্ড</label><input id="newUserPass" type="password" required></div><button class="secondary">＋ ইউজার তৈরি</button></form><div id="usersList" style="margin-top:12px"></div></div></div>
-    <div class="grid2"><div class="panel"><h3>☁️ Firebase Cloud Sync</h3><p class="muted">একই Firebase অ্যাকাউন্ট দিয়ে অন্য ডিভাইসে যুক্ত হলে ভাড়াটিয়া, ইউনিট, বিল, জমা ও সেটিংস সিংক হবে।</p><div id="firebaseSyncStatus" class="notice" role="status">Firebase সিংক সংযোগ করা হয়নি।</div><form id="firebaseSyncForm" style="margin-top:12px"><div class="field"><label>Firebase Authentication Email</label><input id="firebaseSyncEmail" type="email" autocomplete="email" placeholder="আপনার Firebase Auth ইমেইল" required></div><div class="field"><label>Firebase Authentication Password</label><input id="firebaseSyncPassword" type="password" autocomplete="current-password" placeholder="Firebase Auth পাসওয়ার্ড" required></div><div class="actions"><button class="primary" id="firebaseConnectBtn">Firebase সিংক সংযোগ</button><button class="ghost" type="button" id="firebaseDisconnectBtn">সংযোগ বিচ্ছিন্ন</button></div></form><p class="muted" style="font-size:12px;margin-top:12px">নোট: এটি সফটওয়্যারের Admin লগইন থেকে আলাদা। Firebase Console → Authentication থেকে ইমেইল/পাসওয়ার্ড ব্যবহারকারী তৈরি করতে হবে।</p></div><div class="panel"><h3>☁️ সিংক নির্দেশনা</h3><ol style="padding-left:20px;line-height:1.8"><li>Firebase Console-এ Email/Password sign-in চালু করুন।</li><li>Authentication → Users থেকে সিংক করার জন্য একটি অ্যাকাউন্ট তৈরি করুন।</li><li>Firestore Rules-এ কেবল লগইন করা ব্যবহারকারীকে নিজের UID-এর ডেটায় প্রবেশাধিকার দিন।</li><li>সব ডিভাইসে একই Firebase অ্যাকাউন্ট ব্যবহার করুন।</li></ol><p class="notice">প্রথমবার সংযোগে Firebase-এ আগে ডেটা থাকলে সেটি স্থানীয় ডেটার জায়গা নেবে। Firebase খালি থাকলে বর্তমান ডেটা প্রথমবার আপলোড হবে। সংযোগের আগে JSON Backup নেওয়া নিরাপদ।</p></div></div>
     <div class="grid2"><div class="panel"><h3>💾 ডেটা ব্যাকআপ / রিস্টোর</h3><p class="muted">ভাড়াটিয়া, বিল, সেটিংসসহ ডেটা JSON ফাইলে রাখুন।</p><div class="toolbar"><button class="primary" onclick="backupData()">⬇ Backup JSON</button><label class="ghost" style="padding:10px 12px;border-radius:12px;cursor:pointer">⬆ Restore JSON<input id="restoreFile" type="file" accept=".json,application/json" style="display:none"></label></div><button class="danger" onclick="clearAll()">সব ডেটা মুছুন</button></div><div class="panel"><h3>🌗 ডিসপ্লে ও ভাষা</h3><div class="toolbar"><button class="secondary" onclick="toggleTheme()">ডার্ক মোড চালু / বন্ধ</button><select id="language" style="max-width:180px"><option value="bn">বাংলা</option><option value="en">English (UI partial)</option></select></div><p class="muted">তারিখ: DD-MMM-YYYY • মাস: MMM-YYYY • মুদ্রা: BDT</p></div></div>
   </section>
   <section class="page" id="page-about"><div class="heading"><div><h2>অ্যাবাউট</h2><p>এই সফটওয়্যার সম্পর্কে</p></div></div><div class="panel" style="max-width:760px;margin:auto;text-align:center;padding:30px"><div class="logo" style="margin:auto;font-size:30px;width:66px;height:66px">⌂</div><h2>স্মার্ট বাড়িওয়ালা</h2><p>বাড়ি ভাড়া, ভাড়াটিয়া, মাসিক বিল এবং বকেয়া ব্যবস্থাপনার সহজ ডিজিটাল সমাধান।</p><hr style="border:0;border-top:1px solid var(--line);margin:22px 0"><h3>SMART COMPUTER &amp; TRAINING CENTRE</h3><p>ওয়েবসাইট: <a href="https://smartcomputer-bd.github.io/com/" target="_blank" rel="noopener">www.smartcomputer-bd.github.io/com</a></p><p>ইমেইল: <a href="mailto:smartcomputer660@gmail.com">smartcomputer660@gmail.com</a></p><p>WhatsApp: <a href="https://wa.me/8801614398989" target="_blank" rel="noopener">+8801614398989</a></p></div></section>
@@ -131,7 +130,9 @@ let currentUser=null,photoData='',signData='';
 const $=id=>document.getElementById(id);
 function loadDB(){try{const x=JSON.parse(localStorage.getItem(KEY)||'null');if(x)db={...db,...x,units:x.units||[],settings:{...db.settings,...x.settings}}}catch(e){}}
 function saveDB(){localStorage.setItem(KEY,JSON.stringify(db));renderAll();if(window.smartBariwalaFirebaseSync)window.smartBariwalaFirebaseSync.pushLocal().catch(e=>window.smartBariwalaFirebaseSync.setStatus('Firebase সিংক ব্যর্থ: '+(e.message||e),true))}
-// Firebase config supplied by the owner. Firebase Authentication is required for protected cloud sync.
+// Firebase auto-sync uses the supplied Email/Password account. WARNING: credentials embedded in a client-side HTML file are visible to anyone who can view/download the source.
+const SMART_BARIWALA_FIREBASE_EMAIL='smartcomputer660@gmail.com';
+const SMART_BARIWALA_FIREBASE_PASSWORD='724672'; // Client-side HTML is not a secure place for passwords.
 const SMART_BARIWALA_FIREBASE_CONFIG={
   apiKey:"AIzaSyAkRg9I9j54Kn-1jSOgSLqOPsbs1CAyCVQ",
   authDomain:"smart-bariwala-56ce4.firebaseapp.com",
@@ -143,14 +144,15 @@ const SMART_BARIWALA_FIREBASE_CONFIG={
 };
 (function initSmartBariwalaFirebase(){
   const sync={app:null,auth:null,firestore:null,user:null,unsubscribe:null,clientId:'device-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),busy:false,pendingPush:false,lastPush:0,
-    setStatus(message,error=false){const el=document.getElementById('firebaseSyncStatus');if(el){el.textContent=message;el.style.background=error?'#fee2e2':'#eff6ff';el.style.color=error?'#991b1b':'#1e40af'}},
-    async connect(email,password){
+    setStatus(message,error=false){if(error)console.error('[Smart Bariwala Cloud Sync]',message);else console.info('[Smart Bariwala Cloud Sync]',message);},
+    async connect(){
       if(!window.firebase||!firebase.apps)throw new Error('Firebase SDK লোড হয়নি; ইন্টারনেট সংযোগ পরীক্ষা করুন');
       if(!this.app){this.app=firebase.apps.length?firebase.app():firebase.initializeApp(SMART_BARIWALA_FIREBASE_CONFIG);this.auth=firebase.auth();this.firestore=firebase.firestore();}
       this.setStatus('Firebase-এ সংযোগ হচ্ছে…');
-      const credential=await this.auth.signInWithEmailAndPassword(email,password);this.user=credential.user;
+      await this.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+      const credential=await this.auth.signInWithEmailAndPassword(SMART_BARIWALA_FIREBASE_EMAIL,SMART_BARIWALA_FIREBASE_PASSWORD);this.user=credential.user;
       if(this.unsubscribe){this.unsubscribe();this.unsubscribe=null}
-      const root=this.firestore.collection('users').doc(this.user.uid);
+      const root=this.firestore.collection('shared').doc('default');
       const names=['tenants','bills','units'];
       const [tenants,bills,units,settingsDoc,metaDoc]=await Promise.all([
         root.collection('tenants').get(),root.collection('bills').get(),root.collection('units').get(),root.collection('app').doc('settings').get(),root.collection('sync').doc('meta').get()
@@ -167,14 +169,14 @@ const SMART_BARIWALA_FIREBASE_CONFIG={
         if(!snap.exists)return;const m=snap.data()||{};if(m.clientId===this.clientId||this.busy)return;
         try{await this.pullCloud(true)}catch(e){this.setStatus('অন্য ডিভাইসের ডেটা পড়া যায়নি: '+e.message,true)}
       },e=>this.setStatus('সিংক পর্যবেক্ষণ ব্যর্থ: '+e.message,true));
-      this.setStatus('Firebase সিংক চালু • '+(this.user.email||this.user.uid));
+      this.setStatus('স্বয়ংক্রিয় ক্লাউড সিংক চালু • '+this.user.uid.slice(0,8));
     },
     async pushLocal(initial=false){
       if(!this.user||!this.firestore)return;
       if(this.busy){this.pendingPush=true;return}
       this.busy=true;
       try{
-        const root=this.firestore.collection('users').doc(this.user.uid);
+        const root=this.firestore.collection('shared').doc('default');
         for(const key of ['tenants','bills','units']){
           const col=root.collection(key),snap=await col.get(),local=Array.isArray(db[key])?db[key]:[],ids=new Set(local.map(x=>String(x.id)));
           const jobs=[];
@@ -189,7 +191,7 @@ const SMART_BARIWALA_FIREBASE_CONFIG={
     },
     async pullCloud(fromRemote){
       if(!this.user||!this.firestore)return;
-      const root=this.firestore.collection('users').doc(this.user.uid);
+      const root=this.firestore.collection('shared').doc('default');
       const [tenants,bills,units,settingsDoc]=await Promise.all([
         root.collection('tenants').get(),root.collection('bills').get(),root.collection('units').get(),root.collection('app').doc('settings').get()
       ]);
@@ -203,9 +205,8 @@ const SMART_BARIWALA_FIREBASE_CONFIG={
   };
   window.smartBariwalaFirebaseSync=sync;
   document.addEventListener('DOMContentLoaded',()=>{
-    const form=document.getElementById('firebaseSyncForm');
-    if(form)form.addEventListener('submit',async e=>{e.preventDefault();const btn=document.getElementById('firebaseConnectBtn');btn.disabled=true;try{await sync.connect(document.getElementById('firebaseSyncEmail').value.trim(),document.getElementById('firebaseSyncPassword').value);document.getElementById('firebaseSyncPassword').value='';}catch(err){sync.setStatus('Firebase সংযোগ হয়নি: '+(err.message||err),true)}finally{btn.disabled=false}});
-    const disconnect=document.getElementById('firebaseDisconnectBtn');if(disconnect)disconnect.addEventListener('click',async()=>{try{await sync.disconnect()}catch(e){sync.setStatus('সংযোগ বিচ্ছিন্ন করা যায়নি: '+e.message,true)}});
+    sync.setStatus('স্বয়ংক্রিয়ভাবে Firebase-এ সংযোগ হচ্ছে…');
+    sync.connect().catch(err=>sync.setStatus('ক্লাউড সিংক সংযোগ হয়নি: '+(err.message||err)+' • Firebase Email/Password sign-in এবং Firestore rules পরীক্ষা করুন',true));
   });
 })();
 function money(n){return '৳'+Number(n||0).toLocaleString('en-US',{maximumFractionDigits:2})}
